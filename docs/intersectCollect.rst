@@ -6,8 +6,10 @@ The db files are supplied using the ``-db`` flag, which should point to a databa
 
 ``{DATABASE PATH}\t{SEPARATOR}\t{COLUMN KEYS}\t{CHROMOSOME COLUMN}\t{MATCHING}\t{COLUMNS TO COLLECT}\t{FILE SIZE}``
 
-NOTE: that matching should be either range or exact. Currently the range option only supports 3-4 keys i.e. only 3 keys are used to define the range look up (preferbly chromosome,start,stop). 
-Range db file should be sorted -k1,1 -k2,2n if it contains chromosome information. 
+.. note:: 
+
+ That matching should be either range or exact. Currently the range option only supports 3-4 keys i.e. only 3 keys are used to define the range look up (preferbly chromosome,start,stop). 
+ Range db file should be sorted -k1,1 -k2,2n if it contains chromosome information. 
 
 If the merge option is used then all overlapping and unique elements are added to the final list. 
 Beware that this option is memory demanding.
@@ -21,6 +23,10 @@ IntersectCollect requires a tab-separated plain text file (the database master f
 
 
 3. The subsequent database(s) to match keys and merge elements from. 
+
+.. note::
+
+  An example database master file can be found at `MIP's`_ github repository. 
 
 
 Usage
@@ -55,3 +61,5 @@ Explanation
 .. csv-table:: intersectCollect Parameters
   :header-rows: 1
   :file: intersectCollect_parameters.csv
+  
+.. _MIP's: https://github.com/henrikstranneheim/MIP/tree/master/templates

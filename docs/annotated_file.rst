@@ -62,7 +62,7 @@ Clinical List Additional Entries
 |Clinical db genome | String    |GRCh37.p8                   |Genome version used in clinical Db                                          |
 |build              |           |                            |                                                                            |
 +-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
-|Disease_gene_model | String    |AR_hom:AR_Compound:AD       |Known Disease Inheritance Model                                             |
+|Disease_gene_model | String    |AR_hom:AR_Compound:AD       |Known disease inheritance model                                             |
 |                   |           |                            |                                                                            |
 +-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
 

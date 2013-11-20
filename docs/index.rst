@@ -23,9 +23,11 @@ Contents:
    adding-new-programs
    structure
    intersectCollect
+   qcCollect
    annotated_file
    pedigree_file
    IDN
+   the_code
 
 
 

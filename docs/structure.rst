@@ -58,9 +58,9 @@ rank_list_filter.pl
 ---------------------------------------
 Scores and ranks each variant using weighted sums according to disease causing potential. 
   
-collect_info.pl
+qcCollect.pl
 ---------------------------------------
-Collects QC data from the MPS analysis. Outputs in tab-sep format. 
+Collects QC data from the MPS analysis in YAML format. (see :doc:`qcCollect`).
 
 add_depth.pl
 ---------------------------------------

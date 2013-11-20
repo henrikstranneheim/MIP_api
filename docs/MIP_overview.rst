@@ -29,7 +29,7 @@ Prerequisites
 MIP will only require prerequisites when processing a modules that has dependencies (See :doc:`setup`). 
 
 
-Meta-Data
+**Meta-Data**
 
 - Pedigree file (`PLINK`_-format; See :doc:`pedigree_file`)
 - Master template files for intersectCollect.pl (See :doc:`intersectCollect`).
@@ -121,6 +121,16 @@ The ``-projectID`` flag sets the account to which allocate the core hours in SLU
 
 MIP currently supports two aligners `Mosaik`_ and `BWA`_, but supports any aligner that outputs BAM files. 
 Follow the instructions in :doc:`adding-new-programs` to add your own favorite aligner.  
+
+**Logging**
+
+MIP will write the active analysis parameters and *STDOUT* to a log file located in:
+``{OUTDIRECTORY}{FAMILYID}/{MIP_LOG}/{SCRIPTNAME_TIMESTAMP}``
+
+Information, such as infile, programs, outdatafiles etc, for each analysis run  is dynamically 
+recorded in the a yaml file determined by the ``-sampleInfoFile`` flag. Information in the sampleInfo 
+file will be updated in each analysis run if identical records are present and novel entries are added. 
+The sampleInfo file is used in :doc:`qcCollect` to extract relevant qc metrics from the MPS analysis. 
 
 **Pipeline WorkFlow**
 
