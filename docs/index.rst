@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the MIP documentation!
-===================================
+
+.. image:: _static/mip-logo.png
+
 Release |version|.
 
 `MIP <https://github.com/henrikstranneheim/MIP>`_ is a pipeline for clinical analysis of whole exome and whole genome data.
@@ -16,10 +17,17 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
-   annotated_file
+   MIP_overview
    installation
    setup
    adding-new-programs
+   structure
+   intersectCollect
+   qcCollect
+   annotated_file
+   pedigree_file
+   IDN
+   the_code
 
 
 
