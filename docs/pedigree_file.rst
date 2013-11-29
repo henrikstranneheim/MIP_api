@@ -25,6 +25,8 @@ the header line does not matter.
 
 If there is no information on the parents or the grandparents they should be encoded as “0”. 
 
+An example pedigree file can be found `here`_.
+
 On UPPMAX
 ---------
 .. note::
@@ -43,14 +45,11 @@ The pedigree file should named: FDN_pedigree.txt.
  SureSelect_All_Exon_G3362_with_annotation_hg19_bed = Agilent_SureSelect.V2
  SureSelect_All_Exon_50mb_with_annotation_hg19_bed = Agilent_SureSelect.V3
  SureSelect_XT_Human_All_Exon_V4_targets.bed = Agilent_SureSelect.V4
+ SureSelect_Human_All_Exon_V5_targets.bed = Agilent_SureSelect.V5
 
  NimbleGen
  SeqCap_EZ_Exome_v2.bed = Nimblegen_SeqCap.V2
 
-
-.. csv-table:: Example
-  :header-rows: 1
-  :file: pedigree_file_example.csv
 
 Abbrevations
 ~~~~~~~~~~~~
@@ -60,3 +59,4 @@ Abbrevations
 
 
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
+.. _here: https://github.com/henrikstranneheim/MIP/blob/develop/templates/1_pedigree.txt
