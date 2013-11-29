@@ -37,7 +37,6 @@ these programs to your ``PATH``:
 - FastQC
 - Mosaik
 - BWA
-- Chanjo
 - SAMTools
 - BedTools
 - PicardTools

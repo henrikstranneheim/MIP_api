@@ -8,9 +8,14 @@ containing information on a position in the genome.
 Meta-information
 ----------------
 
+Meta-information is not mandatory and exists only to aid in the interpretation of the headers 
+and data in the annotated file. The metadata does not need to be ordered and can be present 
+without a corresponding header. However, the metadata {COLUMN NAME} must be identical to the 
+corresponding header {COLUMN NAME} to link the correct information. 
+
 Format::
 
-##{COLUMN NAME}={String},{VERSION}={String},{DESCRIPTION}={String},{dDBNAME}={String}
+##{COLUMN NAME}={String}\t{TYPE}={String}\t{VERSION}={String}\t{DESCRIPTION}={String}\t{dDBNAME}={String}
 
 File meta-information is included after the ``##`` string and must be *key=value* pairs.
 
@@ -42,6 +47,8 @@ Clinical List Additional Entries
 +--------------------------------------------------+---------------------------------------------------------------------------+
 |Disease_gene_model                                |AR_hom:AR_Compound:AD:                                                     |
 +--------------------------------------------------+---------------------------------------------------------------------------+
+|Clinical_db_gene_annotation                       |IEM:EP                                                                     |
++--------------------------------------------------+---------------------------------------------------------------------------+
                                                                                                                                
 Longer description
 ~~~~~~~~~~~~~~~~~~
@@ -56,14 +63,17 @@ Clinical List Additional Entries
 +-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
 |   COLUMN_NAME     |     TYPE  |          VALUE             |     DESCRIPTION                                                            |
 +===================+===========+============================+============================================================================+
-|Disease group      | String    |Peroxisomal metabolism      |Information on the type of disease                                          |
+|Disease group      | ``String``|Peroxisomal metabolism      |Information on the type of disease                                          |
 |                   |           |                            |                                                                            |
 +-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
-|Clinical db genome | String    |GRCh37.p8                   |Genome version used in clinical Db                                          |
+|Clinical db genome | ``String``|GRCh37.p8                   |Genome version used in clinical Db                                          |
 |build              |           |                            |                                                                            |
 +-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
-|Disease_gene_model | String    |AR_hom:AR_Compound:AD       |Known disease inheritance model                                             |
+|Disease Gene Model | ``String``|AR_hom:AR_Compound:AD       |Known disease inheritance model                                             |
 |                   |           |                            |                                                                            |
++-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
+|Clinical db Gene   |``String`` |IEM:EP                      |Genes associated with a disease group                                       |
+|Annotation         |           |                            |                                                                            |
 +-------------------+-----------+----------------------------+----------------------------------------------------------------------------+
 
 .. _HGNC: http://www.genenames.org/
