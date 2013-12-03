@@ -27,7 +27,7 @@ Make sure you have loaded/installed all dependencies and that they are in your `
 - `ANNOVAR`_
 - intersectCollect.pl (Supplied with MIP)
 - add_depth.pl (Supplied with MIP)
-- rank_list_filter.pl (Supplied with MIP)
+- `mip_family_analysis`_
 - `VcfTools`_
 - `PLINK`_
 
@@ -43,6 +43,10 @@ these programs to your ``$PATH``:
 - VcfTools
 - PLINK
 
+and these to your python ``virtualenvironment``:
+
+- Chanjo
+- mip_family_analysis
 
 On UPPMAX
 ---------
@@ -88,5 +92,6 @@ The flag switches the defaults to those used at CMMS. Thus you can start an anal
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
 .. _ANNOVAR: http://www.openbioinformatics.org/annovar/
+.. _mip_family_analysis: https://github.com/moonso/Mip_Family_Analysis
 .. _VcfTools: http://vcftools.sourceforge.net/
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
