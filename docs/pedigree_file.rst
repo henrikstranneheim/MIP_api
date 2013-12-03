@@ -41,7 +41,6 @@ The pedigree file should named: ``<FDN>_pedigree.txt``.
 
 .. csv-table:: Additional columns in the pedigree file
   :header-rows: 1
-  :widths: 1 1 4
   :file: pedigree_file_optional_columns.csv
 
 
@@ -50,11 +49,10 @@ Supported capture kits
 
 * Agilent Sure Select
 
- Agilent Sure Select
- SureSelect_All_Exon_G3362_with_annotation_hg19_bed = Agilent_SureSelect.V2
- SureSelect_All_Exon_50mb_with_annotation_hg19_bed = Agilent_SureSelect.V3
- SureSelect_XT_Human_All_Exon_V4_targets.bed = Agilent_SureSelect.V4
- SureSelect_Human_All_Exon_V5_targets.bed = Agilent_SureSelect.V5
+  * SureSelect_All_Exon_G3362_with_annotation_hg19_bed => Agilent_SureSelect.V2
+  * SureSelect_All_Exon_50mb_with_annotation_hg19_bed => Agilent_SureSelect.V3
+  * SureSelect_XT_Human_All_Exon_V4_targets.bed => Agilent_SureSelect.V4
+  * SureSelect_Human_All_Exon_V5_targets.bed => Agilent_SureSelect.V5
 
 * NimbleGen
 

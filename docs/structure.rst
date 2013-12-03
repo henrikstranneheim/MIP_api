@@ -54,9 +54,9 @@ intersectCollect.pl
 Intersects and collects information from external databases and merges all to one annotated variant file. (see :doc:`intersectCollect`). 
 
 
-rank_list_filter.pl
+Variant evaluation
 ---------------------------------------
-Scores and ranks each variant using weighted sums according to disease causing potential. 
+Score and rank each variant using weighted sums according to disease causing potential: `mip_family_analysis`_
   
 qcCollect.pl
 ---------------------------------------
@@ -78,4 +78,5 @@ Plots coverage across chromosomes.
 .. _PicardTools: http://picard.sourceforge.net/
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
+.. _mip_family_analysis: https://github.com/moonso/Mip_Family_Analysis
 .. _ANNOVAR: http://www.openbioinformatics.org/annovar/
