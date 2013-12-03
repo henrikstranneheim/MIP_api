@@ -24,6 +24,21 @@ IntersectCollect requires a tab-separated plain text file (the database master f
 
 3. The subsequent database(s) to match keys and merge elements from. 
 
+Meta-information (Optional)
+---------------------------
+
+Meta-information is not mandatory and exists only to aid in the interpretation of the headers 
+and data in the template master file and annotated file. The metadata does not need to be ordered and can be present 
+without a corresponding header. However, the metadata {COLUMN NAME} must be identical to the 
+corresponding header {COLUMN NAME} to link the correct information. 
+
+Format::
+
+##{COLUMN NAME}={String}\t{TYPE}={String}\t{VERSION}={String}\t{DESCRIPTION}={String}\t{dDBNAME}={String}
+
+File meta-information is included after the ``##`` string and must be *key=value* pairs.
+
+
 .. note::
 
   An example database master file can be found at `MIP's`_ github repository. 
