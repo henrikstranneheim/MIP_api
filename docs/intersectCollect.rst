@@ -4,12 +4,13 @@ Intersects and collects information (in any order) based on 1-4 keys present (ma
 The set of elements to be interrogated are decided by the first db file elements unless the merge option is used.
 The db files are supplied using the ``-db`` flag, which should point to a database master file (tab-sep) with the format:
 
-``{DATABASE PATH}\t{SEPARATOR}\t{COLUMN KEYS}\t{CHROMOSOME COLUMN}\t{MATCHING}\t{COLUMNS TO COLLECT}\t{FILE SIZE}``
+.. code-block:: console
 
-.. note:: 
+  {DATABASE PATH}\t{SEPARATOR}\t{COLUMN KEYS}\t{CHROMOSOME COLUMN}\t{MATCHING}\t{COLUMNS TO COLLECT}\t{FILE SIZE}
 
- That matching should be either range or exact. Currently the range option only supports 3-4 keys i.e. only 3 keys are used to define the range look up (preferbly chromosome,start,stop). 
- Range db file should be sorted -k1,1 -k2,2n if it contains chromosome information. 
+.. note::
+
+  That matching should be either range or exact. Currently the range option only supports 3-4 keys i.e. only 3 keys are used to define the range look up (preferbly chromosome,start,stop). Range db file should be sorted ``-k1,1 -k2,2n`` if it contains chromosome information. 
 
 If the merge option is used then all overlapping and unique elements are added to the final list. 
 Beware that this option is memory demanding.
@@ -23,6 +24,21 @@ IntersectCollect requires a tab-separated plain text file (the database master f
 
 
 3. The subsequent database(s) to match keys and merge elements from. 
+
+Meta-information (Optional)
+---------------------------
+
+Meta-information is not mandatory and exists only to aid in the interpretation of the headers 
+and data in the template master file and annotated file. The metadata does not need to be ordered and can be present 
+without a corresponding header. However, the metadata {COLUMN NAME} must be identical to the 
+corresponding header {COLUMN NAME} to link the correct information. 
+
+Format::
+
+##{COLUMN NAME}={String}\t{TYPE}={String}\t{VERSION}={String}\t{DESCRIPTION}={String}\t{dDBNAME}={String}
+
+File meta-information is included after the ``##`` string and must be *key=value* pairs.
+
 
 .. note::
 
