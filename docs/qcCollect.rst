@@ -23,4 +23,4 @@ printed from qcCollect using the ``-preg & -prego`` flags
 
 .. csv-table:: qcCollect Parameters
   :header-rows: 1
-  :file: qcCollect_parameters.csv
+  :file: tables/qcCollect_parameters.csv

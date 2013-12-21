@@ -20,7 +20,7 @@ The first six columns are mandatory. The name and order of the headers should fo
 .. csv-table:: Mandatory Columns
   :header-rows: 1
   :widths: 1 1 4
-  :file: pedigree_file_mandatory_columns.csv
+  :file: tables/pedigree_file_mandatory_columns.csv
 
 In addition to these mandatory columns we use the pedigree file to record meta data on each individual.
 Entries within each column should be separated with ";" (semi-colon) and entered in consecutive order.  
@@ -41,7 +41,7 @@ The pedigree file should named: ``<FDN>_pedigree.txt``.
 
 .. csv-table:: Additional columns in the pedigree file
   :header-rows: 1
-  :file: pedigree_file_optional_columns.csv
+  :file: tables/pedigree_file_optional_columns.csv
 
 
 Supported capture kits
@@ -62,7 +62,7 @@ Abbrevations
 --------------
 .. csv-table:: 
   :header-rows: 1
-  :file: pedigree_file_abbreviations.csv
+  :file: tables/pedigree_file_abbreviations.csv
 
 
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml

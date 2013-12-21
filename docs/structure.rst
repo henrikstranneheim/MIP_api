@@ -8,7 +8,7 @@ Central hub and likely the only script most users will ever interact directly wi
 .. code-block:: console
   
   $ echo "Running MIP on Uppmax, analyzing all samples in family 10"
-  $ perl mip.pl -env_up 1 -f 10
+  $ mip.pl -c CMMS_Uppmax_config.yaml -f 10
 
 Sequence QC
 -----------

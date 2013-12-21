@@ -33,4 +33,5 @@ Installation
     $ git clone https://github.com/henrikstranneheim/MIP.git
     $ cd MIP
 
-  After this you can decide whether to make MIP an "executable" by either adding the install directory to the ``$PATH`` in e.g. "``~/.bash_profile``" or move all the files from this directory to somewhere already in your path like "``~/usr/bin``".
+  After this you can decide whether to make MIP an "executable" by either adding the install directory to the ``$PATH`` in e.g. "``~/.bash_profile``" or move all the files from this directory to somewhere already in your path like "``~/usr/bin``". 
+  Remember to make the file(s) executable by ``chmod +x file``.

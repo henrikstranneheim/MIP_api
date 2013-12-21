@@ -5,7 +5,7 @@ data.
 
 Overview
 --------
-MIP performs whole genome or target region analysis of sequenced paired end
+MIP performs whole genome or target region analysis of sequenced single-end and/or paired-end
 reads from the Illumina plattform in fastq(.gz) format to generate annotated
 ranked potential disease causing variants. 
 MIP performs QC, alignment, variant discovery and
@@ -25,11 +25,9 @@ MIP is written in Perl and therfore requires that Perl is installed on your OS (
 
 Prerequisites
 ~~~~~~~~~~~~~~
-.. todo::
-
-  Mention something about SLURM dependency
 
 MIP will only require prerequisites when processing a modules that has dependencies (See :doc:`setup`).
+
 
 Meta-Data
 ^^^^^^^^^^
@@ -41,8 +39,14 @@ Usage
 MIP is called from the command line and takes input from the command line
 (precedence), a config file (yaml-format) or falls back on defaults where applicable.
 
-Lists are supplied as comma separated input or repeated flag entries. Only flags
-that will actually be used needs to be specified and MIP will check that all
+Lists are supplied as comma separated input or repeated flag entries. 
+
+.. note::
+
+  List or repeated entries need to be submitted with the same order for each element across all 
+  supplied lists. 
+  
+Only flags that will actually be used needs to be specified and MIP will check that all
 required parameters and dependencies (for these flags only) are set before submitting to SLURM. 
 
 Program parameters always begins with "p". Program parameters can be set to "0"
@@ -53,8 +57,8 @@ programs in dry run mode to ensure proper file handling.
 
 MIP will overwrite data files when reanalyzing, but keeps all "versioned" sbatch scripts for traceability.
 
-MIP allows individual target file calculations if supplied with a pedigree file
-containing the supported capture kits.
+MIP allows individual target file calculations if supplied with a pedigree file or config file
+containing the supported capture kits for each sample.
 
 You can always supply ``perl mip.pl -h`` to list all available parameters and
 defaults.
@@ -109,12 +113,15 @@ alignment and in the *<aligner>/info* directory post alignment.
 **Analysis Types**
 
 Currently, MIP handles WES ``-at exomes``, WGS ``-at genomes`` or Rapid analysis ``-at rapid`` for acute patient(s). 
+
 The rapid analysis requires ``BWA_MEM`` and selects the data that overlaps with the regions supplied with 
-the ``-bwamemrdb`` flag. 
+the ``-bwamemrdb`` flag. MIP will automatically detect if the sequencing run is single-end or paired-end 
+and the length of the sequences and automatically adjust accordingly.
 
 .. note::
 
-   In rapid mode; Sort and index is done for each batch of reads in the ``BWA_Mem`` call, since the link to infile is broken by the read batch processing. However ``pSamToolsSort`` should be enabled to ensure correct fileending and merge the flow to ordinary modules.
+   In rapid mode; Sort and index is done for each batch of reads in the ``BWA_Mem`` call, since the link to infile is broken by the read batch processing. 
+   However ``pSamToolsSort`` should be enabled to ensure correct fileending and merge the flow to ordinary modules.
 
 **Project ID**
 
@@ -148,7 +155,7 @@ This is an example of a workflow that MIP can perform (used @CMMS).
 .. csv-table:: MIP Parameters
   :header-rows: 1
   :widths: 2, 1, 1, 3
-  :file: MIP_parameters.csv
+  :file: tables/MIP_parameters.csv
 
 \* outDataDir/familyID/aligner/GATK/candidates/ranking/familyID_orphan.selectVariants, outDataDir/familyID/aligner/GATK/candidates/ranking/clinical/familyID.selectVariants
 

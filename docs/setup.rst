@@ -7,6 +7,11 @@ The permanent filename should follow the following format::
 
   {LANE}_{DATE}_{FLOW CELL}_{IDN}_index{BARCODE SEQ}_{DIRECTION 1/2}.fastq.qz
 
+.. note::
+
+   The `familyID` and `sampleID(s)` needs to be unique and that the sampleID supplied should be 
+   equal to the {IDN} in the filename.
+
 Dependencies
 ~~~~~~~~~~~~~~
 Make sure you have loaded/installed all dependencies and that they are in your ``$PATH``. You only need to load the dependencies that are required for the modules that you want to run. If you fail to install dependencies for a module, MIP will tell you what dependencies you need to install (or add to your ``$PATH``) and exit.
@@ -14,7 +19,7 @@ Make sure you have loaded/installed all dependencies and that they are in your `
 **Program/Modules**
 
 - Perl `YAML.pm`_ module, since this is not included in the Perl standard
-  distribution (if you want to supply config files to MIP)
+  distribution (if you want to supply config and qc files to MIP)
 - Simple Linux Utility for Resource Management (`SLURM`_)
 - `FastQC`_
 - `Mosaik`_
@@ -48,6 +53,11 @@ and these to your python ``virtualenvironment``:
 - Chanjo
 - mip_family_analysis
 
+Databases/References
+--------------------
+
+Please use `Cosmid`_ to download references and/or databases.
+
 On UPPMAX
 ---------
 Add modules::
@@ -56,29 +66,12 @@ Add modules::
 
 You do best installing both GATK and PicardTools yourself. Make sure to load the correct Java environment to run these tools.
 
-.. note::
-  N.B. `plink` needs to be loaded *before* `PicardTools`.
-
-.. note::
-
-  The current version of FastQC is only tested under Java 1.6. Therefore we can't use the latest version of GATK which requires Java 1.7!
-
 Moving files from INBOX
 ~~~~~~~~~~~~~~~~~~~~~~~
 FASTQ-files should be moved from `/INBOX` to a backed up directory.
 
 1. Check the :doc:`pedigree_file` and move it to a backed up directory ("exomes")
 2. Move and rename gzipped FASTQ-files into ``{SEQ TYPE}/{IDN}/fastq``, where :doc:`IDN` is your sample ID.
-
-
-EnvironmentUppmax flag
-~~~~~~~~~~~~~~~~~~~~~~
-The ``-environmentUppmax`` flag is used as a shortcut that is especially useful unless you're using a config.yaml file. 
-The flag switches the defaults to those used at CMMS. Thus you can start an analysis for all members of family 1 by:
-
-.. code-block:: console
-
-  $ perl mip.pl -env_up 1 -f 1
 
 
 .. _YAML.pm: http://search.cpan.org/~mstrout/YAML-0.84/lib/YAML.pm
@@ -95,3 +88,4 @@ The flag switches the defaults to those used at CMMS. Thus you can start an anal
 .. _mip_family_analysis: https://github.com/moonso/Mip_Family_Analysis
 .. _VcfTools: http://vcftools.sourceforge.net/
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
+.. _Cosmid: https://github.com/robinandeer/cosmid

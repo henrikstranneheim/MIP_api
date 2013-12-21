@@ -76,6 +76,6 @@ Explanation
 
 .. csv-table:: intersectCollect Parameters
   :header-rows: 1
-  :file: intersectCollect_parameters.csv
+  :file: tables/intersectCollect_parameters.csv
   
 .. _MIP's: https://github.com/henrikstranneheim/MIP/tree/master/templates

@@ -33,7 +33,7 @@ Short description
 .. csv-table::
   :header-rows: 1
   :widths: 1, 4
-  :file: mip-output.csv
+  :file: tables/mip-output.csv
 
 
 Clinical List Additional Entries
@@ -55,7 +55,7 @@ Longer description
 .. csv-table::
   :header-rows: 1
   :widths: 1, 1, 2, 4
-  :file: mip-output-long.csv
+  :file: tables/mip-output-long.csv
 
 
 Clinical List Additional Entries

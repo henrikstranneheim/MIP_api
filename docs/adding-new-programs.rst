@@ -28,11 +28,13 @@ This subroutine takes a number of input parameters. There are basically three pa
 
 .. code-block:: perl
 
-  DefineParameters("pChanjo", "program", 0, 0, "MIP", 0, "nofileEnding", "MAIN");
+  DefineParameters("pChanjoBuild", "program", 1, "MIP", 0, "nofileEnding", "CoverageReport");
 
-  DefineParameters("chanjoStore", "path", "nodefault", "/proj/b2010080/private/mip_references/coverage.CCDS12.sqlite", "pChanjo", "file")
+  DefineParameters("chanjoBuildDb", "path", "CCDS.current.txt", "pChanjoBuild", "file");
 
-  DefineParameters("chanjoCutoff", "program", 10, 10, "pChanjo", 0)
+  DefineParameters("pChanjoCalculate", "program", 0, "MIP", 0, "nofileEnding", "MAIN");
+
+  DefineParameters("chanjoCalculateCutoff", "program", 10, "pChanjoCalculate", 0)
 
 
 .. csv-table:: DefineParameters - parameters
@@ -54,9 +56,11 @@ You should replace anything that looks like ``<placeholder>``:
 
 .. code-block:: perl
   
-  'pCh|pChanjo:n' => \$parameter{'pChanjo'}{'value'},  # Chanjo coverage analysis
-  'chStore|chanjoStore:s' => \$parameter{'chanjoStore'}{'value'},  # Central SQLite database path
-  'chCut|chanjoCutoff:n' => \$parameter{'chanjoCutoff'}{'value'},  # Cutoff used for completeness
+  'pCh|pChanjoBuild:n' => \$parameter{'pChanjoBuild'}{'value'},  # ChanjoBuild coverage analysis
+  'chbdb|chanjoBuildDb:s' => \$parameter{'chanjoBuildDb'}{'value'},  # Central SQLite database path
+  'pCh_C|pChanjoCalculate:n' => \$parameter{'pChanjoCalculate'}{'value'}, # Chanjo coverage analysis
+  'chccut|chanjoCalculateCutoff:n' => \$parameter{'chanjoCalculateCutoff'}{'value'}, # Cutoff used for completeness
+         
 
 Again, program options begin with a leading "p" by convention. Make sure you don't cause any naming conflicts.
 
@@ -78,11 +82,11 @@ Later in your code when you would like to access those values you would join on 
 
 .. _if-block:
 
-if-block run checker
----------------------
+if-block run checker in MAIN
+----------------------------
 The if-block checks whether the program is set to run but it also has a number of additional responsibilities.
 
-Perhaps the most important is to define dependencies. This is done by placing your if-statement after the closest upsteam process to yours. Chanjo, for example, needs to wait until `PicardToolsMarkDuplicates` has finished processing the BAM-files before running.
+Perhaps the most important is to define dependencies. This is done by placing your if-statement after the closest upsteam process to yours. ChanjoBuild, for example, needs to wait until `PicardToolsMarkDuplicates` has finished processing the BAM-files before running.
 
 .. code-block:: perl
   
@@ -92,7 +96,7 @@ Perhaps the most important is to define dependencies. This is done by placing yo
   }
 
   # This is where Chanjo fits!
-  if ($scriptParameter{'pChanjo'} > 0) {
+  if ($scriptParameter{'pChanjoBuild'} > 0) {
     # Body...
   }
 
@@ -100,29 +104,15 @@ Next (inside the if-block) it should print an announcement to two file handles:
 
 .. code-block:: perl
 
-  for my $fh (STDOUT, MIPLOGG) { print $fh "\nChanjo\n"; }
+  for my $fh (STDOUT, MIPLOGG) { print $fh "\nChanjoBuild\n"; }
 
-Lastly it should call a :ref:`custom-sub`, e.g. for each individual sample:
-
-.. code-block:: perl
-
-  foreach my $sampleID (@sampleIDs) {
-    chanjo(
-      $sampleID,
-      $scriptParameter{'familyID'},
-      $scriptParameter{'aligner'},
-      $scriptParameter{'outDataDir'},
-      $scriptParameter{'chanjoStore'},
-      $scriptParameter{'chanjoCutoff'},
-      $scriptParameter{'pChanjo'},
-      $scriptparameter{'dryRunAll'},
-      $sampleInfo
-    );
-  }
+Lastly it should call a :ref:`custom-sub`, e.g. for each individual sample or per family, which will write a SBATCH
+script(s), submit them to SLURM, which executes the module. 
 
 .. note::
 
-  ``$sampleInfo`` is a hash table storing filename endings from different stages of the pipeline. It's used to determine input filenames for your program.
+  ``$sampleInfo`` is a hash table storing sample information, for example filename endings from 
+  different stages of the pipeline. It's used to determine input filenames for your program.
 
 .. _custom-sub:
 
@@ -132,7 +122,7 @@ First up, let's choose a relevant (and conflict free) name for our subroutine.
 
 .. code-block:: perl
 
-  sub chanjo {
+  sub ChanjoBuild {
     # Body...
   }
 
@@ -151,7 +141,7 @@ SBATCH headers are written by the `ProgramPreRequisites` subroutine. It takes a 
 
 .. code-block:: perl
 
-  ProgramPreRequisites($sampleID, "chanjo", "$aligner/coverageReport", 0, *CHANJO, 1, $runtimeEst);
+  ProgramPreRequisites($sampleID, "ChanjoBuild", "$aligner/coverageReport", 0, *CHANJOBUI, 1, $runtimeEst);
 
 .. csv-table:: ProgramPreRequisites - paramaters
   :header-rows: 1
@@ -178,7 +168,7 @@ If you depend on earlier scripts to generate infile(s) for the new program it's 
 
 ``$sampleInfo`` is a hash table in global scope.
 
-`MIP` supports... [HENRIK EXPLAINS SWITCH]
+`MIP` supports multiple infiles and therefore MIP needs to check if the file(s) have been merge or not.This is done with the `CheckIfMergedFiles` subroutine, which returns either a 1 (files was merged) or 0 (no merge of files)
 
 .. code-block:: perl
 
@@ -194,18 +184,18 @@ This is where you fit relevant parameters into your command line tool interface.
 
 .. code-block:: perl
 
-  print CHANJO "
+  print CHANJOBUI "
   # ------------------------------------------------------------
   #  Create a temp JSON file with exon coverage annotations
   # ------------------------------------------------------------\n";
-  print CHANJO "chanjo annotate $storePath using $bamFile";
-  print CHANJO "--cutoff $cutoff";
-  print CHANJO "--sample $sampleID";
-  print CHANJO "--group $familyID";
-  print CHANJO "--json $jsonPath";
+  print CHANJOBUI "chanjo annotate $storePath using $bamFile";
+  print CHANJOBUI "--cutoff $cutoff";
+  print CHANJOBUI "--sample $sampleID";
+  print CHANJOBUI "--group $familyID";
+  print CHANJOBUI "--json $jsonPath";
 
   # I'm done printing; let's drop the file handle
-  close(CHANJO);
+  close(CHANJOBUI);
 
 .. note::
 
@@ -218,8 +208,8 @@ This subroutine is responsible for actually submitting the SBATCH script and han
 .. code-block:: perl
 
   if ( ($runMode == 1) && ($dryRunAll == 0) ) {
-    # Chanjo is a terminally branching job: linear dependencies/no follow up
-    FIDSubmitJob($sampleID, $familyID, 2, $parameter{'pChanjo'}{'chain'}, $filename, 0);
+    # ChanjoBuild is a terminally branching job: linear dependencies/no follow up
+    FIDSubmitJob($sampleID, $familyID, 2, $parameter{'pChanjoBuild'}{'chain'}, $filename, 0);
   }
 
 .. csv-table:: FIDSubmitJob - paramaters
@@ -237,7 +227,7 @@ To figure out which option (integer) to supply as the third argument to `FIDSubm
 
 .. note::
 
-  ``$parameter{'pChanjo'}{'chain'}`` is just the chain that you set in `DefineParameters`. In this case we could've replaced it with "MAIN".
+  ``$parameter{'pChanjoBuild'}{'chain'}`` is just the chain that you set in `DefineParameters`. In this case we could've replaced it with "MAIN".
 
 Further information
 --------------------

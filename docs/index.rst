@@ -24,6 +24,7 @@ Contents:
    structure
    intersectCollect
    qcCollect
+   configuration_file
    annotated_file
    pedigree_file
    IDN
