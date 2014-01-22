@@ -152,6 +152,7 @@ This is an example of a workflow that MIP can perform (used @CMMS).
     :height: 500px
 
 
+
 .. csv-table:: MIP Parameters
   :header-rows: 1
   :widths: 2, 1, 1, 3

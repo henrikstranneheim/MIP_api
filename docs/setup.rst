@@ -56,8 +56,45 @@ and these to your python ``virtualenvironment``:
 Databases/References
 --------------------
 
-Please use `Cosmid`_ to download references and/or databases.
+Please checkout `Cosmid`_ to download references and/or databases.
 
+MIP can build certain program prerequisites automatically:
+
+Human Genome Reference Meta Files:
+ 1. The sequence dictionnary (".dict")
+ 2. The ".fasta.fai" file
+
+Mosaik:
+ 1. The Mosaik align format of the human genome {mosaikAlignReference}.
+ 2. The Mosaik align jump database {mosaikJumpDbStub}.
+ 3. The Mosaik align network files {mosaikAlignNeuralNetworkPeFile} and {mosaikAlignNeuralNetworkSeFile}. These will be copied from your MOSAIK installation to the MIP reference directory.
+
+BWA:
+ 1. The BWA index of the human genome. 
+
+.. note::
+
+   If you do not supply these parameters (Mosaik/BWA) MIP will create these from scratch using the supplied
+   human reference genom as template. 
+
+Capture target files:
+ 1. The "infile_list" and .pad100.infile_list files used in {pPicardToolsCalculateHSMetrics}
+ 2. The ".pad100.interval_list" file used in by some GATK modules.
+
+.. note::
+
+   If you do not supply these parameters MIP will create these from scratch using the supplied
+   latest supported capture kit ".bed" file and the supplied
+   human reference genome as template.
+   
+ANNOVAR:
+The choosen Annovar databases are downloaded before use if lacking in the annovar/humandb 
+directory.
+
+.. note::
+   
+   This applies only to the supported annovar databases.
+   
 On UPPMAX
 ---------
 Add modules::

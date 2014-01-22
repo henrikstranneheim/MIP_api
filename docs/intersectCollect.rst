@@ -74,6 +74,17 @@ Explanation
 #. Columns to collect = The columns number that are to be collected (1..N). Entry is comma-separated.
 #. File size = Small (read whole database to RAM) or large (handle database one chromosome at a time). 
 
+Dynamic Template File used with MIP
+-----------------------------------
+To avoid having to update the master template file each time MIP is executed for different families
+the database path are dynamically updated by MIP for the following "dynamic strings":
+
+  * FDN! = '-f familyID' (from command line)
+  * IDN! = '-s sampleIDs' (from command line), configuration file or supplied pedigree file
+  * RD!= '-rd' referencesDir (from command line), configuration file or supplied pedigree file
+  * ODF!= '-odd' outDataDir (from command line), configuration file or supplied pedigree file
+  * ALIGNER! = '-aligner' (from command line), configuration file or supplied pedigree file
+
 .. csv-table:: intersectCollect Parameters
   :header-rows: 1
   :file: tables/intersectCollect_parameters.csv
