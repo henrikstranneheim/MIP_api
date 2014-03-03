@@ -35,7 +35,7 @@ corresponding header {COLUMN NAME} to link the correct information.
 
 Format::
 
-##{COLUMN NAME}={String}\t{TYPE}={String}\t{VERSION}={String}\t{DESCRIPTION}={String}\t{dDBNAME}={String}
+##{COLUMN NAME}={String}\t{TYPE}={String}\t{VERSION}={String}\t{DESCRIPTION}={String}\t{dBNAME}={String}
 
 File meta-information is included after the ``##`` string and must be *key=value* pairs.
 
@@ -52,6 +52,20 @@ Usage
 Installation
 ------------
 IntersectCollect is written in Perl, so naturally you need to have Perl installed.
+IntersectCollect also supports `Tabix`_ formated files.
+
+Tabix
+~~~~~
+1. `Download`_ and install `Tabix`_. 
+2. Add the C/java version of tabix to your ``$PATH``. 
+3. Install the perl wrapper that comes with Tabix by:
+
+.. code-block:: console
+
+  $cd {PATH}/tabix-0.2.6/perl/
+  $perl Makefile.PL
+  $make test
+  $make install
 
 SetUp
 -----
@@ -72,7 +86,7 @@ Explanation
 #. Chromosome column = The column number of the chromosome element.
 #. Matching = range (3-4 keys) or exact (1-4 keys).
 #. Columns to collect = The columns number that are to be collected (1..N). Entry is comma-separated.
-#. File size = Small (read whole database to RAM) or large (handle database one chromosome at a time). 
+#. File size = tabix, small (read whole database to RAM) or large (handle database one chromosome at a time). 
 
 Dynamic Template File used with MIP
 -----------------------------------
@@ -90,3 +104,5 @@ the database path are dynamically updated by MIP for the following "dynamic stri
   :file: tables/intersectCollect_parameters.csv
   
 .. _MIP's: https://github.com/henrikstranneheim/MIP/tree/master/templates
+.. _Tabix: http://samtools.sourceforge.net/tabix.shtml
+.. _Download: http://sourceforge.net/projects/samtools/files/tabix/

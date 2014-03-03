@@ -5,7 +5,7 @@ Filename convention
 ~~~~~~~~~~~~~~~~~~~~~
 The permanent filename should follow the following format::
 
-  {LANE}_{DATE}_{FLOW CELL}_{IDN}_index{BARCODE SEQ}_{DIRECTION 1/2}.fastq.qz
+  {LANE}_{DATE}_{FLOW CELL}_{IDN}_{BARCODE SEQ}_{DIRECTION 1/2}.fastq.qz
 
 .. note::
 
@@ -30,7 +30,7 @@ Make sure you have loaded/installed all dependencies and that they are in your `
 - `Chanjo`_
 - `GATK`_
 - `ANNOVAR`_
-- intersectCollect.pl (Supplied with MIP)
+- :doc:`intersectCollect`.pl (Supplied with MIP; Requires `Tabix`_)
 - add_depth.pl (Supplied with MIP)
 - `mip_family_analysis`_
 - `VcfTools`_
@@ -43,6 +43,7 @@ these programs to your ``$PATH``:
 - Mosaik
 - BWA
 - SAMTools
+- Tabix
 - BedTools
 - PicardTools
 - VcfTools
@@ -52,13 +53,25 @@ and these to your python ``virtualenvironment``:
 
 - Chanjo
 - mip_family_analysis
+- `Cosmid`_ for automatic download
 
 Databases/References
 --------------------
 
-Please checkout `Cosmid`_ to download references and/or databases.
+Please checkout `Cosmid`_ to download references and/or databases on your own or via MIP.
 
-MIP can build certain program prerequisites automatically:
+MIP can build/download many program prerequisites automatically:
+
+.. note::
+
+   Download is only enabled when using the default parameters of MIP and requires a Cosmid 
+   installation in your python virtualenvironment.
+   
+Download:
+
+1. Human Decoy Genome Reference (1000G)
+2. The Consensus Coding Sequence project database (CCDS)
+3. Relevant references from the 1000G FTP Bundle (mills, omni, dbsnp etc)
 
 Human Genome Reference Meta Files:
  1. The sequence dictionnary (".dict")
@@ -89,7 +102,7 @@ Capture target files:
    
 ANNOVAR:
 The choosen Annovar databases are downloaded before use if lacking in the annovar/humandb 
-directory.
+directory using Annovars built-in download function.
 
 .. note::
    
@@ -99,16 +112,9 @@ On UPPMAX
 ---------
 Add modules::
 
-  module load java/sun_jdk1.7.0_25 FastQC mosaik-aligner bwa BEDTools plink vcftools annovar
+  module load java/sun_jdk1.7.0_25 FastQC mosaik-aligner bwa samtools BEDTools plink vcftools annovar
 
 You do best installing both GATK and PicardTools yourself. Make sure to load the correct Java environment to run these tools.
-
-Moving files from INBOX
-~~~~~~~~~~~~~~~~~~~~~~~
-FASTQ-files should be moved from `/INBOX` to a backed up directory.
-
-1. Check the :doc:`pedigree_file` and move it to a backed up directory ("exomes")
-2. Move and rename gzipped FASTQ-files into ``{SEQ TYPE}/{IDN}/fastq``, where :doc:`IDN` is your sample ID.
 
 
 .. _YAML.pm: http://search.cpan.org/~mstrout/YAML-0.84/lib/YAML.pm
@@ -126,3 +132,4 @@ FASTQ-files should be moved from `/INBOX` to a backed up directory.
 .. _VcfTools: http://vcftools.sourceforge.net/
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Cosmid: https://github.com/robinandeer/cosmid
+.. _Tabix: http://samtools.sourceforge.net/tabix.shtml

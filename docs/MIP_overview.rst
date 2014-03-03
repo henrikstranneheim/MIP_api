@@ -31,8 +31,10 @@ MIP will only require prerequisites when processing a modules that has dependenc
 
 Meta-Data
 ^^^^^^^^^^
-- Pedigree file (`PLINK`_-format; See :doc:`pedigree_file`)
-- Master template files for intersectCollect.pl (See :doc:`intersectCollect`).
+- Pedigree file (`PLINK`_-format; See :doc:`pedigree_file` & MIP´s github `repository`_).
+- Configuration file (`YAML`_-format; See :doc:`configuration_file` & MIP´s github `repository`_).
+- Master template files for intersectCollect.pl (See :doc:`intersectCollect` & MIP´s github `repository`_).
+- Master template file for selecting variants to include in the clinical list prior to ranking the variants (See :doc:`intersectCollect` & MIP´s github `repository`_).
 
 Usage
 ~~~~~
@@ -152,14 +154,8 @@ This is an example of a workflow that MIP can perform (used @CMMS).
     :height: 500px
 
 
-
-.. csv-table:: MIP Parameters
-  :header-rows: 1
-  :widths: 2, 1, 1, 3
-  :file: tables/MIP_parameters.csv
-
-\* outDataDir/familyID/aligner/GATK/candidates/ranking/familyID_orphan.selectVariants, outDataDir/familyID/aligner/GATK/candidates/ranking/clinical/familyID.selectVariants
-
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/
+.. _repository: https://github.com/henrikstranneheim/MIP/tree/master/templates
+.. _YAML: http://www.yaml.org/
