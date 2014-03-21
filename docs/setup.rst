@@ -14,27 +14,31 @@ The permanent filename should follow the following format::
 
 Dependencies
 ~~~~~~~~~~~~~~
-Make sure you have loaded/installed all dependencies and that they are in your ``$PATH``. You only need to load the dependencies that are required for the modules that you want to run. If you fail to install dependencies for a module, MIP will tell you what dependencies you need to install (or add to your ``$PATH``) and exit.
+Make sure you have loaded/installed all dependencies and that they are in your ``$PATH``. 
+You only need to load the dependencies that are required for the modules that you want to 
+run. If you fail to install dependencies for a module, MIP will tell you what dependencies 
+you need to install (or add to your ``$PATH``) and exit. Version after the software name
+are tested for compatibility with MIP. 
 
 **Program/Modules**
 
 - Perl `YAML.pm`_ module, since this is not included in the Perl standard
   distribution (if you want to supply config and qc files to MIP)
 - Simple Linux Utility for Resource Management (`SLURM`_)
-- `FastQC`_
-- `Mosaik`_
-- `BWA`_
-- `SAMTools`_
-- `BedTools`_
-- `PicardTools`_
-- `Chanjo`_
-- `GATK`_
-- `ANNOVAR`_
+- `FastQC`_ (version: 0.10.0)
+- `Mosaik`_ (version: 2.2.3)
+- `BWA`_ (version: 0.7.5a)
+- `SAMTools`_ (version: 0.1.19)
+- `BedTools`_ (version: 2.17.0)
+- `PicardTools`_ (version: 1.106)
+- `Chanjo`_ (version: 0.5.4)
+- `GATK`_ (version: 2.8)
+- `ANNOVAR`_ (version: 2013-08-23)
 - :doc:`intersectCollect`.pl (Supplied with MIP; Requires `Tabix`_)
 - add_depth.pl (Supplied with MIP)
-- `mip_family_analysis`_
-- `VcfTools`_
-- `PLINK`_
+- `mip_family_analysis`_ (version: 0.8.5)
+- `VcfTools`_ (version: 0.1.9.0)
+- `PLINK`_ (version: 1.07)
 
 Depending on what programs you include in the MIP analysis you also need to add
 these programs to your ``$PATH``:
@@ -53,7 +57,11 @@ and these to your python ``virtualenvironment``:
 
 - Chanjo
 - mip_family_analysis
-- `Cosmid`_ for automatic download
+- `Cosmid`_ (version: 0.4.9.1) for automatic download
+
+To make sure that you use the same commands to work on the virtualenvironment, you need to
+install a virtual environment wrapper. We recommend `pyenv`_ and `pyenv-virtualenvwrapper`_. 
+To enable the virualenvwrapper add: ``pyenv virtualenvwrapper`` to your ``~/.bash_profile``. 
 
 Databases/References
 --------------------
@@ -133,3 +141,5 @@ You do best installing both GATK and PicardTools yourself. Make sure to load the
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Cosmid: https://github.com/robinandeer/cosmid
 .. _Tabix: http://samtools.sourceforge.net/tabix.shtml
+.. _pyenv: https://github.com/yyuu/pyenv
+.. _pyenv-virtualenvwrapper: https://github.com/yyuu/pyenv-virtualenvwrapper
