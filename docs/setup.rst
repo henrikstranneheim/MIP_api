@@ -34,7 +34,7 @@ are tested for compatibility with MIP.
 - `Chanjo`_ (version: 0.5.4)
 - `GATK`_ (version: 3.1)
 - `ANNOVAR`_ (version: 2013-08-23)
-- :doc:`intersectCollect`.pl (Supplied with MIP; Requires `Tabix`_)
+- :doc:`intersectCollect`.pl (Supplied with MIP; Requires `Tabix`_ and the perl module `Set-IntervalTree`_)
 - add_depth.pl (Supplied with MIP)
 - `mip_family_analysis`_ (version: 0.8.5)
 - `VcfTools`_ (version: 0.1.9.0)
@@ -141,5 +141,6 @@ You do best installing both GATK and PicardTools yourself. Make sure to load the
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Cosmid: https://github.com/robinandeer/cosmid
 .. _Tabix: http://samtools.sourceforge.net/tabix.shtml
+.. _Set-IntervalTree: http://search.cpan.org/~benbooth/Set-IntervalTree/lib/Set/IntervalTree.pm
 .. _pyenv: https://github.com/yyuu/pyenv
 .. _pyenv-virtualenvwrapper: https://github.com/yyuu/pyenv-virtualenvwrapper
