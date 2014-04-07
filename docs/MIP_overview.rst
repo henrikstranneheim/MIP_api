@@ -123,7 +123,7 @@ and the length of the sequences and automatically adjust accordingly.
 .. note::
 
    In rapid mode; Sort and index is done for each batch of reads in the ``BWA_Mem`` call, since the link to infile is broken by the read batch processing. 
-   However ``pSamToolsSort`` should be enabled to ensure correct fileending and merge the flow to ordinary modules.
+   However ``pPicardToolsSortSam`` should be enabled to ensure correct fileending and merge the flow to ordinary modules.
 
 **Project ID**
 

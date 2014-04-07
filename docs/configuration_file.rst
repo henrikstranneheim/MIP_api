@@ -35,4 +35,12 @@ configuration file, command line (precedence) or pedigree file.
   Both updated and constant entries will be written to the analysis specific folder if specified by
   '-wc'. 
 
+Capture kits info supplied in the configuration file should be on sampleID level:
+
+.. code-block:: yaml
+
+	FDN:
+	  IDN:
+	    Flag: Entry
+
 .. _here: https://github.com/henrikstranneheim/MIP/tree/master/templates
