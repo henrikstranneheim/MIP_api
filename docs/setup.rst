@@ -9,7 +9,7 @@ The permanent filename should follow the following format::
 
 .. note::
 
-   The `familyID` and `sampleID(s)` needs to be unique and that the sampleID supplied should be 
+   The `familyID` and `sampleID(s)` needs to be unique and the sampleID supplied should be 
    equal to the {IDN} in the filename.
 
 Dependencies
@@ -25,18 +25,20 @@ are tested for compatibility with MIP.
 - Perl `YAML.pm`_ module, since this is not included in the Perl standard
   distribution (if you want to supply config and qc files to MIP)
 - Simple Linux Utility for Resource Management (`SLURM`_)
-- `FastQC`_ (version: 0.10.0)
+- `FastQC`_ (version: 0.11.2)
 - `Mosaik`_ (version: 2.2.24)
 - `BWA`_ (version: 0.7.5a)
-- `SAMTools`_ (version: 0.1.19)
-- `BedTools`_ (version: 2.17.0)
-- `PicardTools`_ (version: 1.106)
-- `Chanjo`_ (version: 0.5.4)
-- `GATK`_ (version: 3.1)
+- `SAMTools`_ (version: 1.0 (using htslib 1.0))
+- `BedTools`_ (version: 2.20.1)
+- `PicardTools`_ (version: 1.118)
+- `Chanjo`_ (version: 2.1.0)
+- `GATK`_ (version: 3.2-2)
+- `VEP`_ (version: 76)
+- vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
+- `SnpEff`_ (4.0)
 - `ANNOVAR`_ (version: 2013-08-23)
-- :doc:`intersectCollect`.pl (Supplied with MIP; Requires `Tabix`_ and the perl module `Set-IntervalTree`_)
-- add_depth.pl (Supplied with MIP)
-- `mip_family_analysis`_ (version: 0.8.5)
+- `GENMOD`_ (version: 1.5.9)
+- `Score_mip_variants`_ (version: 0.5.4)
 - `VcfTools`_ (version: 0.1.9.0)
 - `PLINK`_ (version: 1.07)
 
@@ -49,14 +51,14 @@ these programs to your ``$PATH``:
 - SAMTools
 - Tabix
 - BedTools
-- PicardTools
 - VcfTools
 - PLINK
 
 and these to your python ``virtualenvironment``:
 
 - Chanjo
-- mip_family_analysis
+- GENMOD
+- Score_mip_variants
 - `Cosmid`_ (version: 0.4.9.1) for automatic download
 
 To make sure that you use the same commands to work on the virtualenvironment, you need to
@@ -75,11 +77,13 @@ MIP can build/download many program prerequisites automatically:
    Download is only enabled when using the default parameters of MIP and requires a Cosmid 
    installation in your python virtualenvironment.
    
-Download:
+**Automatic Download:**
 
 1. Human Decoy Genome Reference (1000G)
 2. The Consensus Coding Sequence project database (CCDS)
 3. Relevant references from the 1000G FTP Bundle (mills, omni, dbsnp etc)
+
+**Automatic Build:**
 
 Human Genome Reference Meta Files:
  1. The sequence dictionnary (".dict")
@@ -114,16 +118,8 @@ directory using Annovars built-in download function.
 
 .. note::
    
-   This applies only to the supported annovar databases.
-   
-On UPPMAX
----------
-Add modules::
-
-  module load java/sun_jdk1.7.0_25 FastQC mosaik-aligner bwa samtools BEDTools plink vcftools annovar
-
-You do best installing both GATK and PicardTools yourself. Make sure to load the correct Java environment to run these tools.
-
+   This applies only to the supported annovar databases. Supply flag "--annovarSupportedTableNames 1"
+   to list the MIP supported databases.
 
 .. _YAML.pm: http://search.cpan.org/~mstrout/YAML-0.84/lib/YAML.pm
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
@@ -135,12 +131,14 @@ You do best installing both GATK and PicardTools yourself. Make sure to load the
 .. _PicardTools: http://picard.sourceforge.net/
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
+.. _VEP: http://www.ensembl.org/info/docs/tools/vep/index.html
+.. _SnpEff: http://snpeff.sourceforge.net/
 .. _ANNOVAR: http://www.openbioinformatics.org/annovar/
-.. _mip_family_analysis: https://github.com/moonso/Mip_Family_Analysis
+.. _GENMOD: https://github.com/moonso/genmod/
+.. _Score_mip_variants: https://github.com/moonso/score_mip_variants
 .. _VcfTools: http://vcftools.sourceforge.net/
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Cosmid: https://github.com/robinandeer/cosmid
 .. _Tabix: http://samtools.sourceforge.net/tabix.shtml
-.. _Set-IntervalTree: http://search.cpan.org/~benbooth/Set-IntervalTree/lib/Set/IntervalTree.pm
 .. _pyenv: https://github.com/yyuu/pyenv
 .. _pyenv-virtualenvwrapper: https://github.com/yyuu/pyenv-virtualenvwrapper

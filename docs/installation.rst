@@ -23,8 +23,6 @@ Installation
 
   You need to make sure all depedencies are installed and loaded (See :doc:`setup`).
 
-  The most obscure program is: `qaTools <https://github.com/CosteaPaul/qaTools>`_. Start by downloading `samtools` v.0.1.18. qaTools needs this to build. Therefore you need to edit the `Makefile` in the qaTools directory to point to the `samtools`-directory before finally running ``make``.
-
 5. "Install" MIP
 
   .. code-block:: console
@@ -32,6 +30,7 @@ Installation
     clone the official git repository
     $ git clone https://github.com/henrikstranneheim/MIP.git
     $ cd MIP
+    $ perl mip.pl -h
 
   After this you can decide whether to make MIP an "executable" by either adding the install directory to the ``$PATH`` in e.g. "``~/.bash_profile``" or move all the files from this directory to somewhere already in your path like "``~/usr/bin``". 
   Remember to make the file(s) executable by ``chmod +x file``.

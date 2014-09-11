@@ -22,10 +22,10 @@ Contents:
    setup
    adding-new-programs
    structure
-   intersectCollect
+   vcfParser
    qcCollect
+   score_mip_variants
    configuration_file
-   annotated_file
    pedigree_file
    IDN
    the_code

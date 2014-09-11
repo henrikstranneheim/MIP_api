@@ -33,15 +33,14 @@ Meta-Data
 ^^^^^^^^^^
 - Pedigree file (`PLINK`_-format; See :doc:`pedigree_file` & MIP´s github `repository`_).
 - Configuration file (`YAML`_-format; See :doc:`configuration_file` & MIP´s github `repository`_).
-- Master template files for intersectCollect.pl (See :doc:`intersectCollect` & MIP´s github `repository`_).
-- Master template file for selecting variants to include in the clinical list prior to ranking the variants (See :doc:`intersectCollect` & MIP´s github `repository`_).
 
 Usage
 ~~~~~
 MIP is called from the command line and takes input from the command line
 (precedence), a config file (yaml-format) or falls back on defaults where applicable.
 
-Lists are supplied as comma separated input or repeated flag entries. 
+Lists are supplied as comma separated input, repeated flag entries on the command line or 
+in the config using the yaml format for arrays. 
 
 .. note::
 
@@ -110,7 +109,7 @@ and will not be overwritten if you begin a new analysis.
 MIP will place any generated datafiles in the output data directory specified by
 ``-outDataDir``. All datatfiles are regenerated for each analysis. *STDOUT* and
 *STDERR* for each program is written in the *<program>/info* directory prior to
-alignment and in the *<aligner>/info* directory post alignment.
+alignment and in the *<aligner>/<program>info* directory post alignment.
 
 **Analysis Types**
 

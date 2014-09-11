@@ -6,11 +6,11 @@ isolation of DNA or subsequent sequence analysis.
 
 Among other things, the file enables:
 
-1. automatic coverage calculation (correct target file(s))
+1. Automatic coverage specification (correct target file(s))
 
-2. application of mendelian filtering models, e.g. `autosomal dominant`, based on pedigree, sex and disease status
+2. Application of mendelian filtering models, e.g. `autosomal dominant`, based on pedigree, sex and disease status
 
-3. collection of analysis info for the sequence analysis pipeline 
+3. Collection of analysis info for the sequence analysis pipeline 
 
 The pedigree file format is defined by `PLINK`_, although we currently only support tab-sep pedigree files. 
 
@@ -57,6 +57,11 @@ Supported capture kits
 * NimbleGen
 
   * SeqCap_EZ_Exome_v2.bed => Nimblegen_SeqCap.V2
+  * SeqCap_EZ_Exome_v3.bed => Nimblegen_SeqCap.V3
+
+.. note::
+ You can use other target region files with MIP, but then you have to supply it on the command line.
+
 
 Abbrevations
 --------------
