@@ -9,7 +9,7 @@ Generally, the higher value the more likely pathogenic variant.
 Score_mip_variants uses config files to define the rank model, which enables customized
 set-up and versioning of rank models.
 
-The WSM uses the following alternatives and weights in rank model "gm_cmms_v1.0":
+The WSM uses the following alternatives and weights in rank model "gm_cmms_v1.2":
 
 Rank score range: -25 <= rs <= 21
 
@@ -58,17 +58,16 @@ Performance value for the SO-terms:
 
 Frequency
 ~~~~~~~~~
-The minor allele (MAF) frequency in public databases (`1000G`_, `dbSNP`_ (version: 129, 
-LatestVersion), `ESV`_. The highest MAF reported from the databases is used to calculate the 
-performance value.
+The alternative allele frequency (AF) in public databases (`1000G`_, `ExAC`_). The highest reported 
+alternative frequency reported from the databases is used to calculate the performance value.
 
 Definitions:
- - Not reported: MAF Na
- - Rare: MAF <= 0.005
- - Intermediate: 0.005 <= MAF <= 0.02
- - Common:  MAF > 0.02
+ - Not reported: AF Na
+ - Rare: AF <= 0.005
+ - Intermediate: 0.005 <= AF <= 0.02
+ - Common:  AF > 0.02
 
-Performance value for maximum MAF:
+Performance value for maximum AF:
  - Not reported = 3
  - Rare = 2
  - Intermediate = 1
@@ -218,8 +217,7 @@ Performance value for ClinVar:
 .. _Consequence: http://www.ensembl.org/info/genome/variation/predicted_data.html
 .. _SO-terms: http://www.sequenceontology.org/
 .. _1000G: http://www.1000genomes.org/
-.. _dbSNP: http://www.ncbi.nlm.nih.gov/SNP/
-.. _ESV: http://evs.gs.washington.edu/EVS/
+.. _ExAC: http://exac.broadinstitute.org/about
 .. _MutationTaster: http://www.mutationtaster.org/
 .. _genmod: https://github.com/moonso/genmod
 .. _Sift: http://sift.jcvi.org/

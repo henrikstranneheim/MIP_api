@@ -12,18 +12,7 @@ Installation
     $ INSTALLER_PERL_VERSION=5.16.0
     $ perlbrew switch perl-$INSTALLER_PERL_VERSION
 
-3. To install the dependencies you can now run:
-
-  .. code-block:: console
-    
-    cpanm <dependency>
-    $ cpanm YAML
-
-4. Dependencies
-
-  You need to make sure all depedencies are installed and loaded (See :doc:`setup`).
-
-5. "Install" MIP
+3. "Install" MIP
 
   .. code-block:: console
     
@@ -34,3 +23,15 @@ Installation
 
   After this you can decide whether to make MIP an "executable" by either adding the install directory to the ``$PATH`` in e.g. "``~/.bash_profile``" or move all the files from this directory to somewhere already in your path like "``~/usr/bin``". 
   Remember to make the file(s) executable by ``chmod +x file``.
+  
+4. Dependencies
+
+  You need to make sure all depedencies are installed and loaded (See :doc:`setup`). 
+  However, MIP should tell you if something is missing.
+
+5. To install the dependencies - use cpanm:
+
+  .. code-block:: console
+    
+    cpanm <dependency>
+    $ cpanm YAML

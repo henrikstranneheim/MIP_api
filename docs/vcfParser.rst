@@ -23,7 +23,19 @@ annotations, moste severe consequence and gene annotations are also included in 
 Select Mode
 ~~~~~~~~~~~
 A list of genes and their corresponding HGNC Symbol can be used to fork the analysis into
-"selected" genes and "orphan" genes. 
+"selected" genes and "orphan" genes.
+
+GuideLines on format for database of genes
+********************************
+ - The database file should contain a header line starting with "#".
+ - The number of headers should match the number of field elements for each entry.
+ - Do not use whitespace in headers.
+ - Do not use ";" in file.
+ - Separate elements in fields with ",". Do not use ", ".
+ - No whitespace in the beginning or end within fields.
+ - No entries should be duplicated within database.
+ - Length of gene coordinates should be greater than 0
+ - Only digits in gene coordinate entries
  
 Range Annotations
 ~~~~~~~~~~~~~~~~~

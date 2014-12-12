@@ -22,24 +22,24 @@ are tested for compatibility with MIP.
 
 **Program/Modules**
 
-- Perl `YAML.pm`_ module, since this is not included in the Perl standard
-  distribution (if you want to supply config and qc files to MIP)
+- Perl `YAML.pm`_ module and `Log::Log4perl.pm`_ since this is not included in the Perl standard
+  distribution
 - Simple Linux Utility for Resource Management (`SLURM`_)
 - `FastQC`_ (version: 0.11.2)
 - `Mosaik`_ (version: 2.2.24)
-- `BWA`_ (version: 0.7.5a)
-- `SAMTools`_ (version: 1.0 (using htslib 1.0))
+- `BWA`_ (version: 0.7.10)
+- `SAMTools`_ (version: 1.1)
 - `BedTools`_ (version: 2.20.1)
-- `PicardTools`_ (version: 1.118)
-- `Chanjo`_ (version: 2.1.0)
-- `GATK`_ (version: 3.2-2)
+- `PicardTools`_ (version: 1.125)
+- `Chanjo`_ (version: 2.3.0)
+- `GATK`_ (version: 3.3-0)
 - `VEP`_ (version: 76)
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.0)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 1.5.9)
+- `GENMOD`_ (version: 1.7.7)
 - `Score_mip_variants`_ (version: 0.5.4)
-- `VcfTools`_ (version: 0.1.9.0)
+- `VcfTools`_ (version: 0.1.12b)
 - `PLINK`_ (version: 1.07)
 
 Depending on what programs you include in the MIP analysis you also need to add
@@ -122,6 +122,7 @@ directory using Annovars built-in download function.
    to list the MIP supported databases.
 
 .. _YAML.pm: http://search.cpan.org/~mstrout/YAML-0.84/lib/YAML.pm
+.. _Log::Log4perl.pm: http://search.cpan.org/~mschilli/Log-Log4perl-1.46/lib/Log/Log4perl.pm
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/
 .. _FastQC: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
