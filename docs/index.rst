@@ -8,8 +8,8 @@
 
 Release |version|.
 
-`MIP <https://github.com/henrikstranneheim/MIP>`_ is a pipeline for clinical analysis of whole exome and whole genome data.
-Here will follow a documentation of the different file formats, and also maybe the steps of the pipeline.
+`MIP <https://github.com/henrikstranneheim/MIP>`_ is a pipeline for clinical analysis of 
+whole exome and whole genome sequence data.
 
 
 Contents:

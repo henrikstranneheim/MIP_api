@@ -1,6 +1,6 @@
 MIP - Mutation Identification Pipeline
 ======================================
-MIP enables identification of potential disease causing variants from sequencing
+MIP enables identification of potential disease causing variants from sequence
 data.
 
 Overview
@@ -8,9 +8,41 @@ Overview
 MIP performs whole genome or target region analysis of sequenced single-end and/or paired-end
 reads from the Illumina plattform in fastq(.gz) format to generate annotated
 ranked potential disease causing variants. 
-MIP performs QC, alignment, variant discovery and
-annotation as well as ranking the found variants according to disease potential
-with a minimum of manual intervention.
+MIP performs QC, alignment, coverage analysis, variant discovery and
+annotation, sample checks as well as ranking the found variants according to disease potential
+with a minimum of manual intervention. MIP is compatible with `Scout`_ for visualization of
+identified variants. 
+
+Features
+--------
+ - Autonomous
+ 	* Checks that all dependencies are fulfilled before launching
+ 	* Builds/downloads references and/or files lacking before launching
+ 	* Splits and merges files for samples and families when relevant
+ - Automatic
+	* A minimal amount of hands-on time
+ 	* Tracks and executes all module without manual intervention
+ 	* Creates internal queues at nodes to optimize processing
+ 	* Minimal IO between nodes and login node
+ - Flexible:
+ 	* Design your own workflow by turning on/off relevant modules 
+ 	* Restart an analysis from anywhere in your workflow
+ 	* Process one, or multiple samples using the module(s) of your choice
+ 	* Supply parameters on the command line, in a pedigree file or via config files
+ 	* Simulate your analysis before performing the actual analysis
+ 	* Redirect each modules analysis process to a temporary directory (@nodes or @login)
+ 	* Limit a run to a specific set of genomic intervals
+ - Fast
+ 	* Analyses an exome trio in approximately 6 h
+ 	* Rapid mode analyzes a WGS sample in approximately 4 h using a data reduction and parallelization scheme
+ - Traceability
+ 	* Recreate your analysis from the MIP log
+ 	* Logs sample meta-data and sequence meta-data
+ 	* Logs version numbers of softwares and databases
+ - Standardized
+ 	* Use standard formats whenever possible
+ - Visualization
+ 	* Output is directly compatibel with Scout
 
 Example Usage
 -------------
@@ -27,10 +59,14 @@ Prerequisites
 ~~~~~~~~~~~~~~
 
 MIP will only require prerequisites when processing a modules that has dependencies (See :doc:`setup`).
+However, some frequently used sequence manipulation tools e.g. samtools, PicardTools, Bedtools are probably
+good to have in your path.
 
 
 Meta-Data
 ^^^^^^^^^^
+Meta data regarding the pedigree, gender and phenotype should be supplied for the analysis.
+
 - Pedigree file (`PLINK`_-format; See :doc:`pedigree_file` & MIP´s github `repository`_).
 - Configuration file (`YAML`_-format; See :doc:`configuration_file` & MIP´s github `repository`_).
 
@@ -50,7 +86,7 @@ in the config using the yaml format for arrays.
 Only flags that will actually be used needs to be specified and MIP will check that all
 required parameters and dependencies (for these flags only) are set before submitting to SLURM. 
 
-Program parameters always begins with "p". Program parameters can be set to "0"
+Program parameters always begins with "p" followed by a capital letter. Program parameters can be set to "0"
 (=off), "1" (=on) and "2" (=dry run mode). Any program can be set to dry
 run mode and MIP will create sbatch scripts, but not submit them to SLURM for these modules. MIP
 can be restarted from any module, but you need to supply previous dependent
@@ -102,7 +138,8 @@ Analyses done per individual is found under respective sampleID subdirectory and
 MIP will create sbatch scripts (.sh) and submit them in proper order with
 attached dependencies to SLURM. These sbatch script are placed in the output
 script directory specified by ``-outScriptDir``. The sbatch scripts are versioned
-and will not be overwritten if you begin a new analysis.
+and will not be overwritten if you begin a new analysis. Versioned "xargs" scripts will also
+be created where possible to maximize the use of the cores procecessing power. 
 
 **Data**
 
@@ -133,7 +170,7 @@ The ``-projectID`` flag sets the account to which core hours will be allocated i
 Currently MIP officially supports two aligners `Mosaik`_ and `BWA`_, but technically supports any aligner that outputs BAM files. 
 Follow the instructions in :doc:`adding-new-programs` to add your own favorite aligner.
 
-**Logging**
+**Log**
 
 MIP will write the active analysis parameters and *STDOUT* to a log file located in:
 ``{OUTDIRECTORY}{FAMILYID}/{MIP_LOG}/{SCRIPTNAME_TIMESTAMP}``
@@ -153,6 +190,7 @@ This is an example of a workflow that MIP can perform (used @CMMS).
     :height: 500px
 
 
+.. _Scout: https://github.com/Clinical-Genomics/scout
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/

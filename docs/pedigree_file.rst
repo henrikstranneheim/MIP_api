@@ -44,23 +44,25 @@ The pedigree file should named: ``<FDN>_pedigree.txt``.
   :file: tables/pedigree_file_optional_columns.csv
 
 
-Supported capture kits
+Pedigree capture kits aliases
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 * Agilent Sure Select
 
-  * SureSelect_All_Exon_G3362_with_annotation_hg19_bed => Agilent_SureSelect.V2
-  * SureSelect_All_Exon_50mb_with_annotation_hg19_bed => Agilent_SureSelect.V3
-  * SureSelect_XT_Human_All_Exon_V4_targets.bed => Agilent_SureSelect.V4
-  * SureSelect_Human_All_Exon_V5_targets.bed => Agilent_SureSelect.V5
-
+  * Agilent_SureSelect.V2 => Agilent_SureSelect.V2.GenomeReferenceSourceVersion_targets.bed
+  * Agilent_SureSelect.V3 => Agilent_SureSelect.V3.GenomeReferenceSourceVersion_targets.bed
+  * Agilent_SureSelect.V4 => Agilent_SureSelect.V4.GenomeReferenceSourceVersion_targets.bed
+  * Agilent_SureSelect.V5 => Agilent_SureSelect.V5.GenomeReferenceSourceVersion_targets.bed
+  * Agilent_SureSelectCRE.V1 => Agilent_SureSelectCRE.V1.GenomeReferenceSourceVersion_targets.bed
+  * Latest => Agilent_SureSelect.V5.GenomeReferenceSourceVersion_targets.bed
+  
 * NimbleGen
 
-  * SeqCap_EZ_Exome_v2.bed => Nimblegen_SeqCap.V2
-  * SeqCap_EZ_Exome_v3.bed => Nimblegen_SeqCap.V3
+  * Nimblegen_SeqCapEZExome.V2 => Nimblegen_SeqCapEZExome.V2.GenomeReferenceSourceVersion_targets.bed
+  * Nimblegen_SeqCapEZExome.V3 => Nimblegen_SeqCapEZExome.V3.GenomeReferenceSourceVersion_targets.bed
 
 .. note::
- You can use other target region files with MIP, but then you have to supply it on the command line.
+ You can use other target region files with MIP but then you have to supply the complete filename with ".bed" ending.
 
 
 Abbrevations
