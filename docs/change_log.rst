@@ -1,0 +1,140 @@
+Change Log
+===========
+MIP v1.0 --> v2.0
+
+- Major code refactoring
+- Bugfixes
+- Updated most program version (see docs) and databases
+	- Logs versions and databases
+- Removed modules -pMerge_anvar, -pAdd_dp
+	- MIP no longer creates master templates, but all is taken care of dynamically
+- Added -pVeP, -pSnE, -pVcP -pChanjoSexCheck
+- Module PicardSortSam is now integrated in alignment modules
+- Use VCF format where appropriate
+	- Created standardised VCF list levels (",", ":", "|")
+- Clinical transcripts are selected after VEP annotation using VCFParser
+	- Removes ethical issue with overlapping genes
+- Full resolution in annotation
+	- Gene
+	- Transcripts
+	- Multiple alleles
+	- Split multi allelic calls into single records
+	- Use SO terms
+	- Calculate Sift an PolyPhen per transcript and allele
+	- Remade transcript and cDNA and protein info from VEP CSQ field
+	- Switched from MAF to AF
+- Use Log4Perl for logging
+- All processes create temp directory on (default @nodes)
+- Creates automatic migration to and from nodes
+- Deploy more aggressive scatter/gather technique. Processing per contig whenever possible.
+- Analyse order in contig size not number
+- Use piping in Snp annotation and where possible 
+- Reduce IO between nodes using -rio flag. Will run modules sequentially where appropriate.
+	- Created automatic removal of files when appropiate at tempDir
+
+* Flag changes
+	- -huref/--humanGenomeReference --> -hgr/--humanGenomeReference
+	- -rea/--researchEthicalApproval Tag for displaying research candidates in Scout (defaults to "notApproved")
+	- -tmd/--tempDirectory Set the temporary directory for all programs (defaults to "/scratch/SLURM_JOB_ID";supply whole path)
+	- -nrm/--nodeRamMemory The RAM memory size of the node(s) in GigaBytes (Defaults to 24)
+	- -ges/--genomicSet Selection of relevant regions post alignment (Format=sorted BED; defaults to "")
+	- -rio/--reduceIO Run consecutive models  at nodes (defaults to "0")
+	- -l/--logFile Mip log file (defaults to "{outDataDir}/{familyID}/mip_log/{timestamp}/{scriptname}_{timestamp}.log")
+	- -pGZ/--pGZip --> -pGZ/--pGZipFastq
+	- -pFQC/--pFastQC --> -pFqC/--pFastQC 
+	- -moaannpe/--mosaikAlignNeuralNetworkPeFile --> -moaape/--mosaikAlignNeuralNetworkPeFile
+	- -moaannse/--mosaikAlignNeuralNetworkSeFile --> -moaase/--mosaikAlignNeuralNetworkSeFile
+	- -pBWA_mem/--pBwaMem --> -pMem/--pBwaMem
+	- -bwamemrdb/--bwaMemRapidDb --> -memrdb/--bwaMemRapidDb
+	- -pBWA_aln/--pBwaAln --> -pAln/--pBwaAln 
+	- -pBWA_sampe/--pBwaSamp --> -pSap/--pBwaSampe
+	- -picardpath/--picardToolsPath --> -ptp/--picardToolsPath
+	- -picttmpd/--PicardToolsTempDirectory --> removed
+	- -pPicT_sort/--pPicardToolsSortSam  --> removed
+	- -pPicT_merge/--pPicardToolsMergeSamFiles --> -pPtM/--pPicardToolsMergeSamFiles
+	- -pPicT_mergerr/--pPicardToolsMergeRapidReads  -> -pPtMR/--pPicardToolsMergeRapidReads
+	- -picT_mergeprev/--picardToolsMergeSamFilesPrevious --> -ptmp/--picardToolsMergeSamFilesPrevious
+	- -pPicT_markdup/--pPicardToolsMarkduplicates --> -pPtMD/--pPicardToolsMarkduplicatesWithMateCigar
+	- -pCh_B/--pChanjoBuild --> -pChB/--pChanjoBuild
+	- -pChS/--pChanjoSexCheck
+	- -pCh_C/--pChanjoCalculate --> -pChA/--pChanjoAnnotate
+	- -chccut/--chanjoCalculateCutoff --> -chacut/--chanjoAnnotateCutoff
+	- -pCh_I/--pChanjoImport --> -pChI/--pChanjoImport
+	- -pCC_bedgc/--pGenomeCoverageBED --> -pGcB/--pGenomeCoverageBED
+	- -xcov/--xCoverage --> -gcbcov/--GenomeCoverageBEDMaxCoverage
+	- -pCC_picmm/--pPicardToolsCollectMultipleMetrics --> -pPtCMM/--pPicardToolsCollectMultipleMetrics
+	- -pCCE_pichs/--pPicardToolsCalculateHSMetrics --> -pPtCHS/--pPicardToolsCalculateHSMetrics
+	- -extbl/--exomeTargetBedInfileLists --> -ptchsetl/--exomeTargetBedInfileLists
+	- -extpbl/--exomeTargetPaddedBedInfileLists --> -ptchsetpl/--exomeTargetPaddedBedInfileLists
+	- -pRCP/--pRCovPlots --> -pRcP/--pRCovPlots
+	- -gatkpath/--genomeAnalysisToolKitPath --> -gtp/--genomeAnalysisToolKitPath
+	- -gatkbdv/--GATKBundleDownLoadVersion --> -gbdv/--GATKBundleDownLoadVersion
+	- -gatktmpd/--GATKTempDirectory --> removed
+	- -gatktpbl/--GATKTargetPaddedBedIntervalLists --> -gtpl/--GATKTargetPaddedBedIntervalLists
+	- -gatkdcov/--GATKDownSampleToCoverage --> -gdco/--GATKDownSampleToCoverage
+	- -pGATK_real/--pGATKRealigner  -->  -pGrA/--pGATKRealigner 
+	- -gatkrealknset1/--GATKReAlignerINDELKnownSet1 --> -graks1/--GATKReAlignerINDELKnownSet1
+	- -gatkrealknset2/--GATKReAlignerINDELKnownSet2 --> -graks2/--GATKReAlignerINDELKnownSet2
+	- -pGATK_baserecal/--pGATKBaseRecalibration --> -pGbR/--pGATKBaseRecalibration
+	- -gatkbaserecalknset/--GATKBaseReCalibrationSNPKnownSet --> -gbrkse/--GATKBaseReCalibrationSNPKnownSet
+	- -pGATK_hapcall/--pGATKHaploTypeCaller --> -pGhC/--pGATKHaploTypeCaller
+	- -gatkhapcallsnpknset/--GATKHaploTypeCallerSNPKnownSet --> -ghckse/--GATKHaploTypeCallerSNPKnownSet
+	- -pGATK_genotype/--pGATKGenoTypeGVCFs --> -pGgT/--pGATKGenoTypeGVCFs
+	- -gatkgenotyperefgvcfinfile/--GATKGenoTypeGVCFsRefGVCFInfile --> -ggtgrl/--GATKGenoTypeGVCFsRefGVCF
+	- -pGATK_varrecal/--pGATKVariantRecalibration  --> -pGvR/--pGATKVariantRecalibration
+	- -gatkexrefsnp/--GATKExomeReferenceSNPs --> -gvrtss/--GATKVariantReCalibrationTrainingSetDbSNP
+	- -gatkvarrecaltrhapmap/--GATKVariantReCalibrationTrainingSetHapMap --> -gvrtsh/--GATKVariantReCalibrationTrainingSetHapMap
+	- -gatkvarrecaltrd1000Gsnp/--GATKVariantReCalibrationTrainingSet1000GSNP --> -gvrtsg/--GATKVariantReCalibrationTrainingSet1000GSNP
+	- -gatkvarrecaltromni/--GATKVariantReCalibrationTrainingSet1000GOmni --> -gvrtso/--GATKVariantReCalibrationTrainingSet1000GOmni
+	- -gatkvarrecaltrdbmills/--GATKVariantReCalibrationTrainingSetMills -->  -gvrtsm/--GATKVariantReCalibrationTrainingSetMills 
+	- -gatkvarrecaltsfilterlevel/--GATKVariantReCalibrationTSFilterLevel --> -gvrtsf/--GATKVariantReCalibrationTSFilterLevel 
+	- -gvrevf/--GATKVariantReCalibrationexcludeNonVariantsFile
+	- -gvrsmr/--GATKVariantReCalibrationSpliMultiRecord
+	- -pGATK_phaseTr/--pGATKPhaseByTransmission --> -pGpT/--pGATKPhaseByTransmission
+	- -pGATK_readPh/--pGATKReadBackedPhasing --> -pGrP/--pGATKReadBackedPhasing
+	- -gatkreadphphaseqthr/--GATKReadBackedPhasingPhaseQualityThresh --> -grpqth/--GATKReadBackedPhasingPhaseQualityThreshold
+	- -pGATK_varevalall/--pGATKVariantEvalAll --> -pGvEA/--pGATKVariantEvalAll
+	- -pGATK_varevalexome/--pGATKVariantEvalExome --> -pGvEE/--pGATKVariantEvalExome
+	- -gatkvarevaldbsnp/--GATKVariantEvalDbSNP --> -gveedbs/--GATKVariantEvalDbSNP
+	- -gatkvarevaldbgold/--GATKVariantEvalGold --> -gveedbg/--GATKVariantEvalGold
+	- -pANVAR/--pAnnovar --> -pAnV/--pAnnovar
+	- -anvarpath/--annovarPath --> -anvp/--annovarPath
+	- -anvargbv/--annovarGenomeBuildVersion --> -anvgbv/--annovarGenomeBuildVersion
+	- -anvartn/--annovarTableNames --> -anvtn/--annovarTableNames 
+	- -anvarstn/--annovarSupportedTableNames --> -anvstn/--annovarSupportedTableNames
+	- -anvarmafth/--annovarMAFThreshold --> -anvarmafth/--annovarMAFThreshold
+	- -pVeP/--pVariantEffectPredictor Annotate variants using VEP (defaults to "1" (=yes))
+	- -vepp/--vepDirectoryPath Path to VEP script directory (defaults to ""; supply whole path)
+	- -vepc/vepDirectoryCache Specify the cache directory to use (supply whole path, defaults to "")
+	- -vepf/--vepFeatures VEP features (defaults to ("refseq","hgvs","symbol","numbers","sift","polyphen","humdiv"); comma sep)
+	- -pVcP/--pVCFParser Parse variants using vcfParser.pl (defaults to "1" (=yes))
+	- -vcpvt/--vcfParserVepTranscripts Parse VEP transcript specific entries (defaults to "0" (=no))
+	- -vcprff/--vcfParserRangeFeatureFile Range annotations file (defaults to ""; tab-sep)
+	- -vcprfa/--vcfParserRangeFeatureAnnotationColumns Range annotations feature columns (defaults to ""; comma sep)
+	- -vcpsf/--vcfParserSelectFile File containging list of genes to analyse seperately (defaults to "";tab-sep file and HGNC Symbol required)
+	- -vcpsfm/--vcfParserSelectFileMatchingColumn Position of HGNC Symbol column in SelectFile (defaults to "")
+	- -vcpsfa/--vcfParserSelectFeatureAnnotationColumns Feature columns to use in annotation (defaults to ""; comma sep)  
+	- -pSnE/--pSnpEff Variant annotation using snpEFF (defaults to "1" (=yes))
+	- -snep/--snpEffPath Path to snpEff. Mandatory for use of snpEff (defaults to "")
+	- -snesaf/--snpSiftAnnotationFiles Annotation files to use with snpSift (comma sep)
+	- -snesdbnsfp/--snpSiftDbNSFPFile DbNSFP File (defaults to "dbNSFP2.6.txt.gz")
+	- -snesdbnsfpa/--snpSiftDbNSFPAnnotations DbNSFP annotations to use with snpSift (defaults to ("SIFT_pred","Polyphen2_HDIV_pred","Polyphen2_HVAR_pred","LRT_pred","MutationTaster_pred","GERP++_NR","GERP++_RS","phastCons100way_vertebrate","1000Gp1_AF","ESP6500_AA_AF"); comma sep)
+	- -pRankVar/--pRankVariants --> -pRaV/--pRankVariants
+	- -rs/--rankScore --> removed
+	- -gf/--geneFile --> -ravgf/--geneFile
+	- -imdbfile/--ImportantDbFile Important Db file (Defaults to "") --> removed
+	- -imdbte/--ImportantDbTemplate Important Db template file used to create the specific family '-im_dbmf' master file (Defaults to "") --> removed
+	- -imdbmf/--ImportantDbMasterFile Important Db master file to be used when selecting variants (defaults to "{outDataDir}/{familyID}/{familyID}.intersectCollect_selectVariants_db_master.txt";Supply whole path) --> removed
+	- -imdbfof/--ImportantDbFileOutFiles The file(s) to write to when selecting variants with intersectCollect.pl. Comma sep (defaults to "{outDataDir}/{familyID}/{aligner}/GATK/candidates/ranking/{familyID}_orphan.selectVariants, {outDataDir}/{familyID}/{aligner}/GATK/candidates/ranking/clinical/{familyID}.selectVariants"; Supply whole path/file) --> removed
+	- -ravcs/--caddWGSSNVs Annotate whole genome sequencing CADD score (defaults to "0" (=no))
+	- -ravcsf/--caddWGSSNVsFile Whole genome sequencing CADD score file (defaults to "whole_genome_SNVs.tsv.gz")
+	- -ravc1kg/--cadd1000Genomes 1000 Genome cadd score file (defaults to "0" (=no))
+	- -ravc1kgf/--cadd1000GenomesFile 1000 Genome cadd score file (defaults to "1000G.tsv.gz")
+	- -ravwg/--wholeGene Allow compound pairs in intronic regions (defaults to "1" (=yes))
+	- -ravrm/--rankModelFile Rank model config file (defaults to "")
+	- -pSCheck/--pSampleCheck --> -pScK/--pSampleCheck
+	- -pQCC/--pQCCollect --> -pQcC/--pQCCollect
+	- -QCCsampleinfo/--QCCollectSampleInfoFile --> -qccsi/--QCCollectSampleInfoFile
+	- -QCCregexp/--QCCollectRegExpFile --> -qccref/--QCCollectRegExpFile
+	- -pREM/--pRemovalRedundantFiles --> -pReM/--pRemoveRedundantFiles
+	- -pAR/--pAnalysisRunStatus --> -pArS/--pAnalysisRunStatus

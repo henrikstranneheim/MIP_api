@@ -34,15 +34,24 @@ Features
  	* Limit a run to a specific set of genomic intervals
  - Fast
  	* Analyses an exome trio in approximately 6 h
+ 	* Analyses a genome in approximately 35 h
  	* Rapid mode analyzes a WGS sample in approximately 4 h using a data reduction and parallelization scheme
  - Traceability
  	* Recreate your analysis from the MIP log
  	* Logs sample meta-data and sequence meta-data
  	* Logs version numbers of softwares and databases
+ - Annotation
+ 	* Gene annotation
+ 		* Summarise over all transcript and output on gene level
+ 	* Transcript level annotation
+ 		* Separate pathogenic transcripts for correct downstream annotation
+ 	* Annotate all alleles for a position
+ 		* Split multi-allelic records into single records to ease annotation
  - Standardized
  	* Use standard formats whenever possible
  - Visualization
  	* Output is directly compatibel with Scout
+
 
 Example Usage
 -------------
@@ -54,6 +63,9 @@ Getting Started
 Installation
 ~~~~~~~~~~~~
 MIP is written in Perl and therfore requires that Perl is installed on your OS (See :doc:`installation`).
+
+Change log (See :doc:`change_log`)
+
 
 Prerequisites
 ~~~~~~~~~~~~~~

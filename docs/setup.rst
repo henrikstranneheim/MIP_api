@@ -37,8 +37,8 @@ are tested for compatibility with MIP.
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.0)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 1.7.7)
-- `Score_mip_variants`_ (version: 0.5.4)
+- `GENMOD`_ (version: 1.9.1)
+- `Score_mip_variants`_ (version: 0.6.0)
 - `VcfTools`_ (version: 0.1.12b)
 - `PLINK`_ (version: 1.07)
 

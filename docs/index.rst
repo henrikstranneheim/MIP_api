@@ -18,6 +18,7 @@ Contents:
    :maxdepth: 2
    
    MIP_overview
+   change_log
    installation
    setup
    adding-new-programs
