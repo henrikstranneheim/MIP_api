@@ -135,8 +135,7 @@ Fastq files (gziped/uncompressed) should be place within the ``-inFilesDirs``.
   MIP will automatically compress any non gzipped files if ``-pGZip`` is enabled. 
   All files ending with .fastq or .fast.gz will be included in the run.
 
-All MIP scripts (including mip.pl) should be placed in the script directory
-specified by ``-inScriptDir``.
+MIP scripts locations are specified by ``-inScriptDir``.
 
 All references and template files should be placed directly in the reference
 directory specified by ``-referencesDir``, except for ANNOVAR db files, which
