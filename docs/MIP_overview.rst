@@ -17,7 +17,7 @@ Features
 --------
  - Autonomous
  	* Checks that all dependencies are fulfilled before launching
- 	* Builds/downloads references and/or files lacking before launching
+ 	* Builds/downloads references and/or files missing before launching
  	* Splits and merges files for samples and families when relevant
  - Automatic
 	* A minimal amount of hands-on time
@@ -29,7 +29,7 @@ Features
  	* Restart an analysis from anywhere in your workflow
  	* Process one, or multiple samples using the module(s) of your choice
  	* Supply parameters on the command line, in a pedigree file or via config files
- 	* Simulate your analysis before performing the actual analysis
+ 	* Simulate your analysis before performing it
  	* Redirect each modules analysis process to a temporary directory (@nodes or @login)
  	* Limit a run to a specific set of genomic intervals
  - Fast
@@ -37,9 +37,10 @@ Features
  	* Analyses a genome in approximately 35 h
  	* Rapid mode analyzes a WGS sample in approximately 4 h using a data reduction and parallelization scheme
  - Traceability
- 	* Recreate your analysis from the MIP log
+ 	* Recreate your analysis from the MIP log or generated config files
  	* Logs sample meta-data and sequence meta-data
  	* Logs version numbers of softwares and databases
+ 	* Checks sample integrity (sex and relationship)
  - Annotation
  	* Gene annotation
  		* Summarise over all transcript and output on gene level
@@ -151,7 +152,7 @@ MIP will create sbatch scripts (.sh) and submit them in proper order with
 attached dependencies to SLURM. These sbatch script are placed in the output
 script directory specified by ``-outScriptDir``. The sbatch scripts are versioned
 and will not be overwritten if you begin a new analysis. Versioned "xargs" scripts will also
-be created where possible to maximize the use of the cores procecessing power. 
+be created where possible to maximize the use of the cores processing power. 
 
 **Data**
 

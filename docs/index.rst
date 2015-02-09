@@ -25,7 +25,7 @@ Contents:
    structure
    vcfParser
    qcCollect
-   score_mip_variants
+   genmod_score
    configuration_file
    pedigree_file
    IDN

@@ -25,7 +25,7 @@ BAM file manipulation
 ---------------------
 
 - Sorting and indexing: `PicardTools`_ (SortSam)
-- Duplicate marking: `PicardTools`_ (MarkDuplicates)
+- Duplicate marking: `PicardTools`_ (MarkDuplicates & MarkDuplicatesWithMateCigar)
 - Realignment and base recalibration: `GATK`_ (Realigner & BaseRecalibration)
 
 Coverage QC
@@ -58,8 +58,8 @@ databases as well as annotation of inheritance models: `VEP`_, :doc:`vcfParser`,
 
 Variant evaluation
 ---------------------------------------
-Score and rank each variant using weighted sums according to disease causing potential: `Score_mip_variants`_
-(see :doc:`score_mip_variants`)
+Score and rank each variant using weighted sums according to disease causing potential: `GENMOD`_ score
+(see :doc:`genmod_score`)
   
 qcCollect.pl
 ---------------------------------------
@@ -74,7 +74,7 @@ Plots coverage across chromosomes.
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/
 .. _SAMtools: http://samtools.sourceforge.net/
-.. _PicardTools: http://picard.sourceforge.net/
+.. _PicardTools: http://broadinstitute.github.io/picard/
 .. _BedTools: http://bedtools.readthedocs.org/en/latest/
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
@@ -83,4 +83,3 @@ Plots coverage across chromosomes.
 .. _SnpEff: http://snpeff.sourceforge.net/
 .. _ANNOVAR: http://www.openbioinformatics.org/annovar/
 .. _GENMOD: https://github.com/moonso/genmod/
-.. _Score_mip_variants: https://github.com/moonso/score_mip_variants

@@ -32,11 +32,6 @@ If there is no information on the parents or the grandparents they should be enc
 
 An example pedigree file can be found `here`_.
 
-On UPPMAX
----------
-.. note::
- Changes to the pedigree file format will be recorded in this document.
-
 The pedigree file should named: ``<FDN>_pedigree.txt``.
 
 .. csv-table:: Additional columns in the pedigree file
@@ -45,7 +40,7 @@ The pedigree file should named: ``<FDN>_pedigree.txt``.
 
 
 Pedigree capture kits aliases
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Agilent Sure Select
 

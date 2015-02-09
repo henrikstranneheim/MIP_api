@@ -7,7 +7,7 @@ MIP v1.0 --> v2.0
 - Updated most program version (see docs) and databases
 	- Logs versions and databases
 - Removed modules -pMerge_anvar, -pAdd_dp
-	- MIP no longer creates master templates, but all is taken care of dynamically
+	- MIP no longer creates master templates, instead this is taken care of dynamically
 - Added -pVeP, -pSnE, -pVcP -pChanjoSexCheck
 - Module PicardSortSam is now integrated in alignment modules
 - Use VCF format where appropriate
@@ -28,7 +28,7 @@ MIP v1.0 --> v2.0
 - Creates automatic migration to and from nodes
 - Deploy more aggressive scatter/gather technique. Processing per contig whenever possible.
 - Analyse order in contig size not number
-- Use piping in Snp annotation and where possible 
+- Use piping in SnpSift annotation and where possible 
 - Reduce IO between nodes using -rio flag. Will run modules sequentially where appropriate.
 	- Created automatic removal of files when appropiate at tempDir
 

@@ -27,18 +27,17 @@ are tested for compatibility with MIP.
 - Simple Linux Utility for Resource Management (`SLURM`_)
 - `FastQC`_ (version: 0.11.2)
 - `Mosaik`_ (version: 2.2.24)
-- `BWA`_ (version: 0.7.10)
+- `BWA`_ (version: 0.7.12)
 - `SAMTools`_ (version: 1.1)
 - `BedTools`_ (version: 2.20.1)
 - `PicardTools`_ (version: 1.125)
 - `Chanjo`_ (version: 2.3.0)
 - `GATK`_ (version: 3.3-0)
-- `VEP`_ (version: 76)
+- `VEP`_ (version: 78)
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.0)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 1.9.1)
-- `Score_mip_variants`_ (version: 0.6.0)
+- `GENMOD`_ (version: 2.0.3)
 - `VcfTools`_ (version: 0.1.12b)
 - `PLINK`_ (version: 1.07)
 
@@ -58,7 +57,6 @@ and these to your python ``virtualenvironment``:
 
 - Chanjo
 - GENMOD
-- Score_mip_variants
 - `Cosmid`_ (version: 0.4.9.1) for automatic download
 
 To make sure that you use the same commands to work on the virtualenvironment, you need to
@@ -118,7 +116,7 @@ directory using Annovars built-in download function.
 
 .. note::
    
-   This applies only to the supported annovar databases. Supply flag "--annovarSupportedTableNames 1"
+   This applies only to the supported annovar databases. Supply flag "--annovarSupportedTableNames"
    to list the MIP supported databases.
 
 .. _YAML.pm: http://search.cpan.org/~mstrout/YAML-0.84/lib/YAML.pm
