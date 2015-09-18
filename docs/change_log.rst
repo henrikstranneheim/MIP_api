@@ -1,5 +1,35 @@
 Change Log
 ===========
+MIP v2.0 --> v2.4
+
+- Bugfixes
+- Updated most program version (see docs) and databases
+	- Logs versions and databases
+- Added -pVT
+- Added -allSites option to GenoTypeVCFs
+- Added version tag to definitions.yaml
+- Cleaned some old parameter names
+- Added test for parameter compatibility between defineParameters.yaml and config
+- Added new parameter snpSiftAnnotationOutInfoKey
+- Changed SnpSift_ for 1000G and EXACAF to facilitate downstream processing since both work on KEY=AF
+- Remade dbsnpAF parsing to accommodate multiple entries for the same env
+- Added vt decompose and normalise subroutine for both reference and variant vcf
+- Removed vcf_parser —split
+- MIP now works only on config tags from select file meta data header for select genes
+- Added genmod version and removed RankVariants version
+- Add test for VEP cache and directory version linked
+- Added option OverclippedReadFilter to GATKBaseRecalibration/PrintReads
+- Exchange grep for any in array check and use eq instead of // for stringency
+- Added vt decompose and normalise subroutine call for relevant downloadable references ("indels", "mills", "dbsnp", "hapmap", "dbsnpex", "1000g_snps")
+- Add check for ingoing references that VT has been used if VT is on
+- Fixed bug in AnalysisRunStatus modules caused when first processing -rio 1 and then -rio 0
+- Fixed bug when adding samples to pedigree to already processed samples
+- Removed Radial:sw and LR_score from dbNSFP annotation as these have become obsolete
+- Remade RemoveRedundant files
+- Added bcf compression alternativ
+- Added perl oneliner to VT that removes '*' alt.allele after decomposing as it does not add any new info
+
+
 MIP v1.0 --> v2.0
 
 - Major code refactoring
