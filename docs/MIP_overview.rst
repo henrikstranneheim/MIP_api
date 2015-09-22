@@ -17,7 +17,8 @@ Features
 --------
  - Autonomous
  	* Checks that all dependencies are fulfilled before launching
- 	* Builds/downloads references and/or files missing before launching
+ 	* Builds/downloads references and/or files missing before launching	
+ 	* Decompose and normalise references and variant vcf
  	* Splits and merges files for samples and families when relevant
  - Automatic
 	* A minimal amount of hands-on time
@@ -51,6 +52,7 @@ Features
  - Standardized
  	* Use standard formats whenever possible
  - Visualization
+  	* Ranks variants according to pathogenic potential
  	* Output is directly compatibel with Scout
 
 

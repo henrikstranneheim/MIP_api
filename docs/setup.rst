@@ -33,11 +33,12 @@ are tested for compatibility with MIP.
 - `PicardTools`_ (version: 1.137)
 - `Chanjo`_ (version: 2.3.0)
 - `GATK`_ (version: 3.4-46)
+- `VT`_ (version: 0.5)
 - `VEP`_ (version: 81)
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.1)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 3.0.0)
+- `GENMOD`_ (version: 3.0.1)
 - `VcfTools`_ (version: 0.1.12b)
 - `PLINK`_ (version: 1.07)
 
@@ -130,6 +131,7 @@ directory using Annovars built-in download function.
 .. _PicardTools: http://picard.sourceforge.net/
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
+.. _VT: https://github.com/atks/vt
 .. _VEP: http://www.ensembl.org/info/docs/tools/vep/index.html
 .. _SnpEff: http://snpeff.sourceforge.net/
 .. _ANNOVAR: http://www.openbioinformatics.org/annovar/
