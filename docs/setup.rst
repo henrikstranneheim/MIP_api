@@ -40,6 +40,7 @@ are tested for compatibility with MIP.
 - `ANNOVAR`_ (version: 2013-08-23)
 - `GENMOD`_ (version: 3.0.1)
 - `VcfTools`_ (version: 0.1.12b)
+- `BcfTools`_ (version: 1.1)
 - `PLINK`_ (version: 1.07)
 
 Depending on what programs you include in the MIP analysis you also need to add
@@ -138,6 +139,7 @@ directory using Annovars built-in download function.
 .. _GENMOD: https://github.com/moonso/genmod/
 .. _Score_mip_variants: https://github.com/moonso/score_mip_variants
 .. _VcfTools: http://vcftools.sourceforge.net/
+.. _BcfTools: https://samtools.github.io/bcftools/bcftools.html
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Cosmid: https://github.com/robinandeer/cosmid
 .. _Tabix: http://samtools.sourceforge.net/tabix.shtml
