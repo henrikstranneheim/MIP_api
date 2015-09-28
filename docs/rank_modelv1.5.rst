@@ -1,4 +1,4 @@
-genmod_score
+rank_modelv1.5
 ==================
 
 Genmod_score uses the `weighted sum model`_ (WSM) approach to rank the most likely
@@ -9,7 +9,7 @@ Generally, the higher value the more likely pathogenic variant.
 Genmod_score uses config files to define the rank model, which enables customized
 set-up and versioning of rank models.
 
-The WSM uses the following alternatives and weights in rank model "gm_cmms_v1.4":
+The WSM uses the following alternatives and weights in rank model "v1.5":
 
 Rank score range: -25 <= rs <= 23
 
