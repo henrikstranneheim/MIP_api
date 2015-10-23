@@ -1,4 +1,4 @@
-rank_modelv1.10
+rank_modelv1.11
 ==================
 
 Genmod score uses the `weighted sum model`_ (WSM) approach to rank the most likely
@@ -79,13 +79,16 @@ Performance value for maximum AF:
 Inheritance Model(s)
 ~~~~~~~~~~~~~~~~~~~~
 The segregation pattern for the variant within the family. These models are currently annotated
-using `genmod`_ models.
+using `genmod`_ models. A variant that is annotated as autosomal compound with no compound partner 
+with a rank score greater than 10 will receive a penalty of -6 to the variants rank score.
+For single samples this rule will be enforced for variants with inheritance model autosomal dominant,
+autosomal dominant denovo in addition to the autosomal compound annotation.
 
 Definitions:
- - Autsomal Recessive, denoted 'AR_hom'
- - Autsomal Recessive denovo, denoted 'AR_hom_dn'
- - Autsomal Dominant, 'AD'
- - Autsomal Dominant denovo, 'AD_dn'
+ - Autosomal Recessive, denoted 'AR_hom'
+ - Autosomal Recessive denovo, denoted 'AR_hom_dn'
+ - Autosomal Dominant, 'AD'
+ - Autosomal Dominant denovo, 'AD_dn'
  - Autosomal Compound Heterozygote, 'AR_comp'
  - X-linked dominant, 'XD'
  - X-linked dominant de novo, 'XD_dn'
@@ -95,6 +98,7 @@ Definitions:
 Performance value for inheritance models:
  - Valid model = 1
  - No model = -12
+ - AR_comp penalty = -6
 
 Protein Functional Prediction
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
