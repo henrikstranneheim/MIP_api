@@ -43,7 +43,7 @@ are tested for compatibility with MIP.
 - `GENMOD`_ (version: 3.4.0)
 - `VcfTools`_ (version: 0.1.12b)
 - `BcfTools`_ (version: 1.1)
-- `PLINK`_ (version: 1.09)
+- `PLINK`_ (version: 1.90b3x)
 
 Depending on what programs you include in the MIP analysis you also need to add
 these programs to your ``$PATH``:
