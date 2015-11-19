@@ -25,6 +25,7 @@ Contents:
    structure
    vcfParser
    qcCollect
+   rank_modelv1.12
    rank_modelv1.11
    rank_modelv1.5
    configuration_file

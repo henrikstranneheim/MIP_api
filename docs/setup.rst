@@ -22,23 +22,25 @@ are tested for compatibility with MIP.
 
 **Program/Modules**
 
-- Perl `YAML.pm`_ module and `Log::Log4perl.pm`_ since this is not included in the Perl standard
-  distribution
+- Perl modules: YAML.pm, Log4perl.pm, List::MoreUtils, DateTime, DateTime::Format::ISO8601, 
+  DateTime::Format::HTTP, DateTime::Format::Mail, Set::IntervalTree from CPAN, since these
+  are not included in the perl standard distribution
 - Simple Linux Utility for Resource Management (`SLURM`_)
 - `FastQC`_ (version: 0.11.2)
 - `Mosaik`_ (version: 2.2.24)
 - `BWA`_ (version: 0.7.12)
-- `SAMTools`_ (version: 1.1)
-- `BedTools`_ (version: 2.20.1)
-- `PicardTools`_ (version: 1.137)
-- `Chanjo`_ (version: 2.3.0)
+- `Sambamba`_ (version: 0.5.9)
+- `SAMTools`_ (version: 1.2)
+- `BedTools`_ (version: 2.25.0)
+- `PicardTools`_ (version: 1.139)
+- `Chanjo`_ (version: 3.1.0)
 - `GATK`_ (version: 3.4-46)
 - `VT`_ (version: 0.5)
-- `VEP`_ (version: 81)
+- `VEP`_ (version: 82)
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.1)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 3.0.1)
+- `GENMOD`_ (version: 3.4.0)
 - `VcfTools`_ (version: 0.1.12b)
 - `BcfTools`_ (version: 1.1)
 - `PLINK`_ (version: 1.07)
@@ -121,12 +123,11 @@ directory using Annovars built-in download function.
    This applies only to the supported annovar databases. Supply flag "--annovarSupportedTableNames"
    to list the MIP supported databases.
 
-.. _YAML.pm: http://search.cpan.org/~mstrout/YAML-0.84/lib/YAML.pm
-.. _Log::Log4perl.pm: http://search.cpan.org/~mschilli/Log-Log4perl-1.46/lib/Log/Log4perl.pm
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/
 .. _FastQC: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 .. _SAMtools: http://samtools.sourceforge.net/
+.. _Sambamba: http://lomereiter.github.io/sambamba/
 .. _BedTools: http://bedtools.readthedocs.org/en/latest/
 .. _SLURM: http://slurm.schedmd.com/
 .. _PicardTools: http://picard.sourceforge.net/
