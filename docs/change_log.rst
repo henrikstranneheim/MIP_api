@@ -1,5 +1,89 @@
 Change Log
 ===========
+
+MIP v2.4 --> v2.6
+
+- Updated GATK to 3.5
+- Added static binning capability for base recalibration (BQSR)
+- Added option --disable_indel_quals to BSQR
+- Added limit for exomes to only use target bases in recalibration
+- Added MTAF to SnpEff and vcfParser for MT frequency annotations
+- Added 'trio' detection to parameters instead of scriptParameters to avoid writing key to config
+- Fixed bug when supplying -sambambaDepthCutOffs on cmd
+- MIP now handles updating to absolute path for  comma separated parameters correctly
+- Removed write to cmd string in mip log for some internal parameters
+- Updated install script
+	- Added PIP to the condo env upon creation
+	- Add check that condo is executable in system before launching rest of installation
+	- Install script can now detect existing condo env and change cmd to accommodate 
+	- Added sambamba (0.5.9), vt (2015.11.10), bedtools (2.25.0), htslib (1.2.1) to bioconda install
+	- Added option to prefer Bioconda install over shell for overlapping modules
+	- Added soft link creation sub routine
+	- Use soft link sub for sambamba (both bioconda and Shell) 
+	- Add soft link to snpEff och SnpSift for bioconda install
+- Update FASTQC to 11.4 via bioconda
+- Updated SnpEff to v4_2 via Shell
+- Updated Plink to v1.90b3.26 64-bit (26 Nov 2015) via shell
+- Updated vcfTools to 0.1.14 via SHELL
+- Updated Chanjo to 3.1.1 via PIP
+- Updated Genmod to 3.4 via PIP
+- Updated Picardtools to 1.141 via bioconda
+- Updated Samtools to 1.3
+- Updated bcfTools to 1.3
+- Updated htslib to 1.3
+- Added picardTools installation via SHELL
+- Updated VEP to 83 via SHELL
+	- Trouble with distribution - htslib and sereal (only issues with testing and not with actual running the script)
+	- Added installation of VEP plugin UpDownDistance
+- Added use of VEP plugin UpDownDistance for MT contig only to avoid over annotation of the compact MT genome
+- Added padding to 10 nucleotides for MT in Vcfparser
+- Added test for undetermined in fastq file name and adjust qc-test to skip entirely for these reads
+- Added samtools mpileup 
+- Added GATKCombineVariants to combine variants calls from multiple variant callers
+- Added generalisation for supporting multiple variant callers in MIP dependencies and GATKCombinaVariants
+- Added no-fail to sample check
+- Modified installation of picardTools and SnpEff
+- Add filtering to variant calls from samtools mpileup
+- Add samtools/bcfTools versions 
+- Add removal of samtools pileup files
+- Added test::Harness for TAP summary results and future inclusion of additional test scripts
+- Add option to determine priority in variant callers as comma sep string
+- Add check of variant callers active compared to prioritise flag
+- Add sanity check of prioritisation flag
+- Add option to turn on or off installation of programs in install.pl
+- Added bcf file compression and indexing as sub
+- Added vcfTobcf sub to GATKCombineVariants
+- Switched vcf ready file from GATKVariantRecalibration to GATKCombineVariants
+- Added Freebayes variant caller
+	- Added to removeRedundantFiles
+	- Added Freebayes version to qcCollect
+- RemoveRedundant files info is now recorded in definition.yaml
+- Added GATKCombineVariants to removeRedundant files
+- Add bcftools norm to samtools pileup and freebayes output
+- Add lastlogFilePath to qc_sampleInfo
+- Made lanes and readDirections info more nested
+- Add 1000G Phase 3 and Exac to Genmod annotation
+- Changed regEx in test.t  to include all until “,” for INFO fields in Header
+- Modified bioconda softlinks sub call to only execute if programs are installed
+- Added MT.codon table sub for snpEff config to install script
+- Remake GENMOD CADD file option to array
+- Added padded target intervals to exome analysis again for GATKRealign and GATKHaplotypeCaller
+- Reactivate GATKPaddedTarget parameter
+- Made associatedPrograms arg into an array instead of a comma sep string
+- Fixed check for when a capture kits is lacking from input and fallback to using “latest”
+- Remade CheckParameterFiles to work with DataType
+- Add evaluation with NIST as a module in MIP
+- Fix the . mip.sh to bash mip.sh
+- Added reference to define/definitions
+- CheckParameterFiles now works with parameterExistsCheck directly instead of “d” and “f” enabling merge of directory and file sections
+- Changed if for intervalListFile to be if($IntervalList ) instead of analysisTypeExome|rapid
+- Add programType=Aligner to define/definitions 
+- Remade sanity check of aligner to count if more than 1 aligner has been switched on (MosaikAligner, BWASampe, BWAMEM)
+- Dynamic setting of ‘aligner’ depending in aligner supplied by outDirectoryName
+- Renamed aligner to alignerOutDir
+- Added genmod max_af
+- Added canonical to VEP features
+
 MIP v2.0 --> v2.4
 
 - Bugfixes

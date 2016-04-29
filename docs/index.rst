@@ -21,6 +21,7 @@ Contents:
    change_log
    installation
    setup
+   MIP_execution
    adding-new-programs
    structure
    vcfParser

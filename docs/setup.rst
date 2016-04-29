@@ -26,24 +26,26 @@ are tested for compatibility with MIP.
   DateTime::Format::HTTP, DateTime::Format::Mail, Set::IntervalTree from CPAN, since these
   are not included in the perl standard distribution
 - Simple Linux Utility for Resource Management (`SLURM`_)
-- `FastQC`_ (version: 0.11.2)
+- `FastQC`_ (version: 0.11.4)
 - `Mosaik`_ (version: 2.2.24)
 - `BWA`_ (version: 0.7.12)
 - `Sambamba`_ (version: 0.5.9)
-- `SAMTools`_ (version: 1.2)
+- `SAMTools`_ (version: 1.3)
 - `BedTools`_ (version: 2.25.0)
-- `PicardTools`_ (version: 1.139)
-- `Chanjo`_ (version: 3.1.0)
-- `GATK`_ (version: 3.4-46)
+- `PicardTools`_ (version: 2.0.1)
+- `Chanjo`_ (version: 3.3.0)
+- `GATK`_ (version: 3.5-0)
+- `freebayes`_ (version: 1.2)
 - `VT`_ (version: 0.5)
-- `VEP`_ (version: 82)
+- `VEP`_ (version: 83) with plugin "UpDownDistance"
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
-- `SnpEff`_ (4.1)
+- `SnpEff`_ (4.2)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 3.4.0)
-- `VcfTools`_ (version: 0.1.12b)
-- `BcfTools`_ (version: 1.1)
+- `GENMOD`_ (version: 3.4.8)
+- `VcfTools`_ (version: 0.1.14)
+- `BcfTools`_ (version: 1.3)
 - `PLINK`_ (version: 1.90b3x)
+- `MultiQC`_ (version: 0.5)
 
 Depending on what programs you include in the MIP analysis you also need to add
 these programs to your ``$PATH``:
@@ -133,6 +135,7 @@ directory using Annovars built-in download function.
 .. _PicardTools: http://picard.sourceforge.net/
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
+.. _freebayes: https://github.com/ekg/freebayes
 .. _VT: https://github.com/atks/vt
 .. _VEP: http://www.ensembl.org/info/docs/tools/vep/index.html
 .. _SnpEff: http://snpeff.sourceforge.net/
@@ -142,6 +145,7 @@ directory using Annovars built-in download function.
 .. _VcfTools: http://vcftools.sourceforge.net/
 .. _BcfTools: https://samtools.github.io/bcftools/bcftools.html
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
+.. _MultiQC: https://github.com/ewels/MultiQC
 .. _Cosmid: https://github.com/robinandeer/cosmid
 .. _Tabix: http://samtools.sourceforge.net/tabix.shtml
 .. _pyenv: https://github.com/yyuu/pyenv

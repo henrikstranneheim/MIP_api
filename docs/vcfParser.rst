@@ -1,5 +1,5 @@
 vcfParser
-==========
+=========
 Parses vcf files to reformat/add INFO fields and metaData headers and/or select entries 
 belonging to a subgroup e.g. a list of genes. Input can be piped or supplied as an infile.
 

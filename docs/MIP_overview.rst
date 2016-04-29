@@ -6,20 +6,24 @@ data.
 Overview
 --------
 MIP performs whole genome or target region analysis of sequenced single-end and/or paired-end
-reads from the Illumina plattform in fastq(.gz) format to generate annotated
+reads from the Illumina platform in fastq(.gz) format to generate annotated
 ranked potential disease causing variants. 
 MIP performs QC, alignment, coverage analysis, variant discovery and
 annotation, sample checks as well as ranking the found variants according to disease potential
-with a minimum of manual intervention. MIP is compatible with `Scout`_ for visualization of
-identified variants. 
+with a minimum of manual intervention. MIP is compatible with `Scout`_ and `Puzzle`_ for visualization of
+identified variants.
+MIP has been in use in the clinical production at the Clinical Genomics facility at Science for 
+Life Laboratory since 2014.
 
 Features
 --------
+ - Installation
+ 	* Simple install of all programs using conda/SHELL via supplied install script 
  - Autonomous
  	* Checks that all dependencies are fulfilled before launching
- 	* Builds/downloads references and/or files missing before launching	
- 	* Decompose and normalise references and variant vcf
- 	* Splits and merges files for samples and families when relevant
+ 	* Builds/Prepares/downloads references and/or files missing before launching	
+ 	* Decompose and normalise reference(s) and variant vcf(s)
+ 	* Splits and merges files/contigs for samples and families when relevant
  - Automatic
 	* A minimal amount of hands-on time
  	* Tracks and executes all module without manual intervention
@@ -33,15 +37,18 @@ Features
  	* Simulate your analysis before performing it
  	* Redirect each modules analysis process to a temporary directory (@nodes or @login)
  	* Limit a run to a specific set of genomic intervals
+ 	* Use multiple variant callers and annotation programs
+ 	* Optionally split data into clinical variants and research variants
  - Fast
- 	* Analyses an exome trio in approximately 6 h
- 	* Analyses a genome in approximately 35 h
+ 	* Analyses an exome trio in approximately 4 h
+ 	* Analyses a X-ten sequenced genome in approximately 21 h
  	* Rapid mode analyzes a WGS sample in approximately 4 h using a data reduction and parallelization scheme
  - Traceability
  	* Recreate your analysis from the MIP log or generated config files
  	* Logs sample meta-data and sequence meta-data
  	* Logs version numbers of softwares and databases
  	* Checks sample integrity (sex and relationship)
+ 	* Test data output existens and integrity using automated tests
  - Annotation
  	* Gene annotation
  		* Summarise over all transcript and output on gene level
@@ -49,11 +56,13 @@ Features
  		* Separate pathogenic transcripts for correct downstream annotation
  	* Annotate all alleles for a position
  		* Split multi-allelic records into single records to ease annotation
+ 	* Annotate coverage across genetic region using Chanjo
+ 	* Extracts QC-metrics and stores them in YAML format
  - Standardized
  	* Use standard formats whenever possible
  - Visualization
   	* Ranks variants according to pathogenic potential
- 	* Output is directly compatibel with Scout
+ 	* Output is directly compatibel with Scout and Puzzle
 
 
 Example Usage
@@ -205,6 +214,7 @@ This is an example of a workflow that MIP can perform (used @CMMS).
 
 
 .. _Scout: https://github.com/Clinical-Genomics/scout
+.. _Puzzle: https://github.com/robinandeer/puzzle
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/

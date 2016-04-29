@@ -19,7 +19,6 @@ Entries in the configuration file containing the following "dynamic strings" wil
   * ANALYSISCONSTANTPATH! = 'analysisConstantPath: {value}'
   * ANALYSISTYPE! = 'analysisType: {value}'
   * FDN! = '-f familyID' (from command line)
-  * IDN! = '-s sampleIDs' (from command line), configuration file or supplied pedigree file
 
 For instance, the pedigree file entry in the configuration file can be supplied like this:
 
