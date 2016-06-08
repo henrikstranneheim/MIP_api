@@ -44,6 +44,7 @@ Features
  	* Analyses a X-ten sequenced genome in approximately 21 h
  	* Rapid mode analyzes a WGS sample in approximately 4 h using a data reduction and parallelization scheme
  - Traceability
+ 	* Track the status of each modules through dynamically updated status logs
  	* Recreate your analysis from the MIP log or generated config files
  	* Logs sample meta-data and sequence meta-data
  	* Logs version numbers of softwares and databases
@@ -56,6 +57,7 @@ Features
  		* Separate pathogenic transcripts for correct downstream annotation
  	* Annotate all alleles for a position
  		* Split multi-allelic records into single records to ease annotation
+ 		* Left align and trim variants to normalise them prior to annotation
  	* Annotate coverage across genetic region using Chanjo
  	* Extracts QC-metrics and stores them in YAML format
  - Standardized

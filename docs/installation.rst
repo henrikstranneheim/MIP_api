@@ -28,7 +28,7 @@ installation.
 
   .. code-block:: console
  
-    $ . mip.sh
+    $ bash mip.sh
     This will install all the dependencies of MIP and other modules included in MIP into a conda environment (defaults to "mip"). 
     However a fresh version of perl and cpanm is installed outside of the conda environment, but are activated through bashrc and  bash_profile.
 
@@ -41,13 +41,14 @@ installation.
   
      'export PATH=$HOME/perl-PERLVERSION/:$PATH' >> ~/.bashrc
      'eval `perl -I ~/perl-PERLVERSION/lib/perl5/ -Mlocal::lib=~/perl-PERLVERSION/`' >> ~/.bash_profile
+     'export PERL_UNICODE=SAD' >> ~/.bash_profile
 
 3. Run MIP
 
   .. code-block:: console
     
     $ source activate mip
-    $ perl mip.pl -h
+    $ mip.pl -h
 
 
 Manual Installation

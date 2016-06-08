@@ -17,8 +17,9 @@ Dependencies
 Make sure you have loaded/installed all dependencies and that they are in your ``$PATH``. 
 You only need to load the dependencies that are required for the modules that you want to 
 run. If you fail to install dependencies for a module, MIP will tell you what dependencies 
-you need to install (or add to your ``$PATH``) and exit. Version after the software name
-are tested for compatibility with MIP. 
+you need to install (or add to your ``$PATH``) and exit. MIP comes with an install script ``install.pl``,
+which will install all necessary programs to execute models in MIP via bioconda and/or $SHELL.
+Version after the software name are tested for compatibility with MIP. 
 
 **Program/Modules**
 
@@ -26,26 +27,27 @@ are tested for compatibility with MIP.
   DateTime::Format::HTTP, DateTime::Format::Mail, Set::IntervalTree from CPAN, since these
   are not included in the perl standard distribution
 - Simple Linux Utility for Resource Management (`SLURM`_)
-- `FastQC`_ (version: 0.11.4)
+- `FastQC`_ (version: 0.11.5)
 - `Mosaik`_ (version: 2.2.24)
-- `BWA`_ (version: 0.7.12)
-- `Sambamba`_ (version: 0.5.9)
+- `BWA`_ (version: 0.7.13)
+- `Sambamba`_ (version: 0.6.1)
 - `SAMTools`_ (version: 1.3)
 - `BedTools`_ (version: 2.25.0)
-- `PicardTools`_ (version: 2.0.1)
-- `Chanjo`_ (version: 3.3.0)
+- `PicardTools`_ (version: 2.3.0)
+- `Chanjo`_ (version: 3.4.1)
+- `Manta`_ (version: 0.29.6)
 - `GATK`_ (version: 3.5-0)
-- `freebayes`_ (version: 1.2)
+- `freebayes`_ (version: 1.0.2)
 - `VT`_ (version: 0.5)
-- `VEP`_ (version: 83) with plugin "UpDownDistance"
+- `VEP`_ (version: 84) with plugin "UpDownDistance, LoFtool, LoF"
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.2)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 3.4.8)
+- `GENMOD`_ (version: 3.5.2)
 - `VcfTools`_ (version: 0.1.14)
 - `BcfTools`_ (version: 1.3)
 - `PLINK`_ (version: 1.90b3x)
-- `MultiQC`_ (version: 0.5)
+- `MultiQC`_ (version: 0.6)
 
 Depending on what programs you include in the MIP analysis you also need to add
 these programs to your ``$PATH``:
@@ -136,6 +138,7 @@ directory using Annovars built-in download function.
 .. _Chanjo: https://chanjo.readthedocs.org/en/latest/
 .. _GATK: http://www.broadinstitute.org/gatk/
 .. _freebayes: https://github.com/ekg/freebayes
+.. _Manta: https://github.com/Illumina/manta
 .. _VT: https://github.com/atks/vt
 .. _VEP: http://www.ensembl.org/info/docs/tools/vep/index.html
 .. _SnpEff: http://snpeff.sourceforge.net/

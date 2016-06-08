@@ -1,6 +1,95 @@
 Change Log
 ===========
 
+MIP v2.6 --> v3.0
+
+- Added Net/SSLeay.pm to install.pl
+- Added option to skip perl install
+- Added Manta, Delly, FT and CNVnator as structural variant callers
+- Added modules CombineStructuralVariants, SVVariantEffectPredictor, SVVCFParser, SVRanking
+- Added merging of samples in “other” chains to family chain for parallel modules
+- Added CNVnator version. Had to be done at start up since CNVnator does not add its version to the output.
+- Added Delly version on sample level
+- Added Manta version  on sample level
+- Added SVVEP version and cache version 
+- Fixed bug causing VEP version to be lost for snvs/indels
+- Added SVVCFParser version
+- Added SVGenmod/rankModel version
+- Added test for GATKCombineVariantsPrioritizeCaller to not include turned of variant callers
+- Added snpEff download of reference genome to avoid race conditions
+- Fixed python virtuelenvironment to not check programs if uve = 0
+- Added VEP/SVVEP assembly, gencode, gene build, HGMDPublic, polyphen, regbuild, Sift, version to qcmetrics
+- made NIST ID settable
+- Removed PicardMergeSwitch, now all files are merged or renamed (single files) for more consequent naming and easier processing
+- Renamed ‘fileEnding’ to ‘fileTag’ and ‘removefileEnding’ to ‘fileEnding’ 
+- Change name of BAMCalibrationAndGTBlock to only BAMCalibrationBlock
+- List::Util is in core module perl 5.18 replaces List::MoreUtils
+- Use say instead of print where relevant
+- Use internal Perl system commands instead of UNIX (copy, make_path)
+- Removed mip log file if present in config to avoid appending to old log file. Supply on log file on cmd if you want to append to log file.
+- Added plink2 installation via bioconda in install script
+- Changed binary i MIP from plink to plink2 
+- Added MultiQC in install script and as MIP module
+- Changed samtools stats module to include complete report for MultiQC processing
+- Made pPicardToolsMergeSamFiles mandatory: Always run even for single samples to rename them correctly for standardised downstream processing. Will also split alignment per contig and copy to temporary directory for '-rio 1' block to enable selective removal of block submodules.
+- Added LOFTEE VEP plugin: https://github.com/konradjk/loftee
+- Added LofTool VEP plugin
+- Added Modern::Perl ‘2014’
+- Added PERL_UNICODE=SAD to install script, and hence bash_profile - stdin, stdout, and stderr to UTF‑8 as well as @ARGV and data handlers
+- Use UTF-8 for all source script
+- Added encoding UTF-8 pragma for open to default expect unicode when opening and writing
+- Enforce perl 5.18 version
+- Added autodie for generalised error and exception handling
+- Removed dateTime and use less cumbersome core module Time::Piece 
+- Removed DV and added AD for samtools mpileup
+- Added joint calling of SV using Manta
+- Added SV analysis of exomes using Manta
+- Modified CombineSVVariants to use Delly and CNVnator on sample-level and Manta on family level
+- Added bcf generation of ranked vcf both select file and research
+- Fixed bug in temp directory
+- Bumped install version to 3.5.1
+- Added Genmod temp dir flag
+- Added sacct commands to trap for each sbatch to relay progress to MIP log file.status
+- Made Sacct dependency into afterany
+- Added pPrepareForVariantAnnotationBlock
+- Removed pythonVirtualEnv and commands as conda is prefered
+- Added sourceEnvironmentCommand
+- Added '-pp' and '-ppm'
+- Add bcf conversion of select and research variants to MIP
+- Added check of programs mode to allowed values, more strict parsing for flaggs expecting numbers
+- Select variants prior to Plink processing using GATK Select variants
+	- Move processing to node, but keept final output printing to hds
+- Added SV annotation using 1000G SV and vcfanno -ends
+	- Added vcfanno, lua, config
+	- Annotate from 1000G SV
+ 	- Modified svrank_mdodel to take 1000G frequency in account
+- Add vcfanno version in SVCombineVariantCallSets
+- Updated fastqc to version 0.11.5
+- Updated bwa to version 0.7.13
+- Updated sambamba to version 0.6.1
+	- Added “—fix-mate-overlaps” to avoid counting overlapping reads twice
+	- Removed Sambamba version from MIP flagg
+- Updated picardtools to version 2.3.0
+- Updated Chanjo to version 3.4.1
+- Updated Manta to version 0.29.6
+- Updated Genmod to version 3.5.2
+- Updated MultiQC to version 0.6
+- Updated Vip to version 84
+- Added Picardtools Markduplicates as a option and default
+- Added more SambambaMarkDup options
+- Make sambamba flagstats into subroutine to be used for all markdup
+- Remade capture kit options into 1 hash flag, which will build all associated files if 1 is lacking 
+- Make  Covariates to be used in the recalibration in GATKBASERCAL to be flag and array option
+	- annotations, -Know and -knownSites 
+- Remade VEP install assembly flag to be array and used rerun install for each assembly version
+- Remade SnpEff install genomeVersion flag to be array and used rerun download for each genome version
+- Added assembly flag to VEP script and alias it to use GRCh prefix and number 
+- Fixed chr prefix for chanjo sex check
+- Updated to GATK version 3.6
+- Created contig splitted target files on the fly for non genome analysis to reduce the running time of GATK Realign, BaseRecal and Haplotype
+- Added sub ReplaceIUPAC and used it on freebayes and samtools mpileup vcfs
+- Changed analysisType default from exomes to genomes
+
 MIP v2.4 --> v2.6
 
 - Updated GATK to 3.5
