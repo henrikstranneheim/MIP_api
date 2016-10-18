@@ -12,6 +12,9 @@ The permanent filename should follow the following format::
    The `familyID` and `sampleID(s)` needs to be unique and the sampleID supplied should be 
    equal to the {IDN} in the filename.
 
+However, MIP will except filenames in other formats as long as the filename contains the sampleID and 
+the mandatory information can be collected from the fastq header.
+
 Dependencies
 ~~~~~~~~~~~~~~
 Make sure you have loaded/installed all dependencies and that they are in your ``$PATH``. 
@@ -29,25 +32,28 @@ Version after the software name are tested for compatibility with MIP.
 - Simple Linux Utility for Resource Management (`SLURM`_)
 - `FastQC`_ (version: 0.11.5)
 - `Mosaik`_ (version: 2.2.24)
-- `BWA`_ (version: 0.7.13)
-- `Sambamba`_ (version: 0.6.1)
-- `SAMTools`_ (version: 1.3)
-- `BedTools`_ (version: 2.25.0)
-- `PicardTools`_ (version: 2.3.0)
+- `BWA`_ (version: 0.7.15)
+- BWAKit (version: 0.7.12)
+- `Sambamba`_ (version: 0.6.3)
+- `SAMTools`_ (version: 1.3.1)
+- `BedTools`_ (version: 2.26.0)
+- `PicardTools`_ (version: 2.5.0)
 - `Chanjo`_ (version: 3.4.1)
-- `Manta`_ (version: 0.29.6)
-- `GATK`_ (version: 3.5-0)
+- `Manta`_ (version: 1.0.0)
+- `GATK`_ (version: 3.6)
 - `freebayes`_ (version: 1.0.2)
-- `VT`_ (version: 0.5)
+- `VT`_ (version: 20151110)
 - `VEP`_ (version: 84) with plugin "UpDownDistance, LoFtool, LoF"
 - vcfParser.pl (Supplied with MIP; see :doc:`vcfParser`)
 - `SnpEff`_ (4.2)
 - `ANNOVAR`_ (version: 2013-08-23)
-- `GENMOD`_ (version: 3.5.2)
-- `VcfTools`_ (version: 0.1.14)
-- `BcfTools`_ (version: 1.3)
-- `PLINK`_ (version: 1.90b3x)
-- `MultiQC`_ (version: 0.6)
+- `GENMOD`_ (version: 3.5.6)
+- variant_integrity (version: 0.0.4)
+- `VcfTools`_ (version: 0.1.0)
+- `BcfTools`_ (version: 1.3.1)
+- Htslib (version: 1.3.1)
+- `PLINK2`_ (version: 1.90b3x35)
+- `MultiQC`_ (version: 0.8dev0)
 
 Depending on what programs you include in the MIP analysis you also need to add
 these programs to your ``$PATH``:
@@ -110,7 +116,7 @@ BWA:
 
 Capture target files:
  1. The "infile_list" and .pad100.infile_list files used in {pPicardToolsCalculateHSMetrics}
- 2. The ".pad100.interval_list" file used in by some GATK modules.
+ 2. The ".pad100.interval_list" file used by some GATK modules.
 
 .. note::
 
@@ -147,7 +153,7 @@ directory using Annovars built-in download function.
 .. _Score_mip_variants: https://github.com/moonso/score_mip_variants
 .. _VcfTools: http://vcftools.sourceforge.net/
 .. _BcfTools: https://samtools.github.io/bcftools/bcftools.html
-.. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
+.. _PLINK2: https://www.cog-genomics.org/plink2
 .. _MultiQC: https://github.com/ewels/MultiQC
 .. _Cosmid: https://github.com/robinandeer/cosmid
 .. _Tabix: http://samtools.sourceforge.net/tabix.shtml

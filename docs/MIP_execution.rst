@@ -65,7 +65,7 @@ Simulate standard analysis
 
 ``-dra 0`` no simulation
 
-One can use ``-dra 1`` or ``-dra 2`` to generate sbatch scripts which then can be submitted manually by the user individually or sequentially using ``sbatch --dependency``. Note that this will not update qc_sampleInfo.yaml as this is done a MIP runtime.
+One can use ``-dra 1`` or ``-dra 2`` to generate sbatch scripts which then can be submitted manually by the user individually or sequentially using ``sbatch --dependency``. Note that this will not update qc_sampleInfo.yaml as this is done at MIP runtime.
 
 Rerun analysis using exactly the same parameters as last analysis run
 ---------------------------------------------------------------------

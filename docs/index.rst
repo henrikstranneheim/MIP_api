@@ -26,9 +26,11 @@ Contents:
    structure
    vcfParser
    qcCollect
+   rank_modelv1.18
    rank_modelv1.12
    rank_modelv1.11
    rank_modelv1.5
+   svrank_modelv1.0
    configuration_file
    pedigree_file
    IDN

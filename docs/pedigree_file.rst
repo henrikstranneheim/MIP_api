@@ -49,6 +49,7 @@ Pedigree capture kits aliases
   * Agilent_SureSelect.V4 => Agilent_SureSelect.V4.GenomeReferenceSourceVersion_targets.bed
   * Agilent_SureSelect.V5 => Agilent_SureSelect.V5.GenomeReferenceSourceVersion_targets.bed
   * Agilent_SureSelectCRE.V1 => Agilent_SureSelectCRE.V1.GenomeReferenceSourceVersion_targets.bed
+  * Agilent_SureSelectFocusedExome.V1 => Agilent_SureSelectFocusedExome.V1.GenomeReferenceSourceVersion_targets.bed
   * Latest => Agilent_SureSelectCRE.V1.GenomeReferenceSourceVersion_targets.bed
   
 * NimbleGen

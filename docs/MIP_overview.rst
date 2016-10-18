@@ -18,7 +18,7 @@ Life Laboratory since 2014.
 Features
 --------
  - Installation
- 	* Simple install of all programs using conda/SHELL via supplied install script 
+ 	* Simple automated install of all programs using conda/SHELL via supplied install script 
  - Autonomous
  	* Checks that all dependencies are fulfilled before launching
  	* Builds/Prepares/downloads references and/or files missing before launching	
@@ -58,7 +58,7 @@ Features
  	* Annotate all alleles for a position
  		* Split multi-allelic records into single records to ease annotation
  		* Left align and trim variants to normalise them prior to annotation
- 	* Annotate coverage across genetic region using Chanjo
+ 	* Annotate coverage across genetic regions
  	* Extracts QC-metrics and stores them in YAML format
  - Standardized
  	* Use standard formats whenever possible
@@ -139,9 +139,9 @@ has precedence.
 
 **Input**
 
-MIP requires the input Fastq files to follow a naming convention to accurately and automatically handel individual runs and lanes (See :doc:`setup`). 
+It is recommended to use MIP's naming convention for input Fastq files to accurately and automatically handel individual runs and lanes (See :doc:`setup`). 
 
-Fastq files (gziped/uncompressed) should be place within the ``-inFilesDirs``. 
+Fastq files (gziped/uncompressed) should be place within the ``-inFilesDirs`` as ``-inFilesDirs {PathToInFileDir}=sampleID``. 
 
 .. note::
 
@@ -175,10 +175,10 @@ alignment and in the *<aligner>/<program>info* directory post alignment.
 
 **Analysis Types**
 
-Currently, MIP handles WES ``-at exomes``, WGS ``-at genomes`` or Rapid analysis ``-at rapid`` for acute patient(s). 
+Currently, MIP handles WES ``-at sampleID=wes``, WGS ``-at sampleID=wgs`` or Rapid analysis ``-at sampleID=rapid`` for acute patient(s). 
 
 The rapid analysis requires ``BWA_MEM`` and selects the data that overlaps with the regions supplied with 
-the ``-bwamemrdb`` flag. MIP will automatically detect if the sequencing run is single-end or paired-end 
+the ``-bwamemrdb`` flag. MIP will automatically detect if the sequencing run is single-end or paired-end/interleaved paired-end 
 and the length of the sequences and automatically adjust accordingly.
 
 .. note::
