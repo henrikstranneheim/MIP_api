@@ -4,6 +4,7 @@ Change Log
 MIP v3.0 --> v4.0
 
 mip.pl
+
 - Fixed chrY for female in SVRanking
 - Fixed bug in SambambaDepth causing logging to be turned off
 - Fixed bug causing MostCompleteBAM being incorrectly added when launching single module
@@ -69,11 +70,11 @@ mip.pl
 - Process SV exome|rapid as one file instead of splitted per contig to ensure that no contig will lack variants
 - Added insert qc metrics to qc_sampleInfo and qcmetrics
 - Added support for interleaved fastq files and relaxed file convention criteria
-    - Interleaved info is gathered from fastq header for read direction 1
-    - BWAMem alignment is automatically adjusted accordingly
-    - MIP now supports mixing of SE, PE and PE-interleaved files within the same fastq directory
-    - Relaxed file convention criteria by collecting mandatory info from fastq header - just require sampleID in filename
-    - Add fake date since this information is not recorded in fastq header for standardised file spec
+	- Interleaved info is gathered from fastq header for read direction 1
+	- BWAMem alignment is automatically adjusted accordingly
+	- MIP now supports mixing of SE, PE and PE-interleaved files within the same fastq directory
+	- Relaxed file convention criteria by collecting mandatory info from fastq header - just require sampleID in filename
+	- Add fake date since this information is not recorded in fastq header for standardised file spec
 - Added support for metadata in yaml format (pedigree and other meta data)
 - MIP will look at the filending to detect file format
 - Set mandatory keys in Plink pedigree format to be lower case throughout in MIP output
@@ -88,7 +89,7 @@ mip.pl
     - Cleaned up code
 - Added cut-offs for evaluation of mendel and father
 - Added collection of expected_coverage from ped.yaml and relay to qcCollect for evaluation
-Removed extra feature annotations and some VEp field parsing
+- Removed extra feature annotations and some VEp field parsing
     svVcfParserRangeFeatureAnnotationColumns:
       - 3 = Ensembl_gene_id - REMOVED
       - 4 = HGNC_symbol
@@ -124,6 +125,7 @@ Removed extra feature annotations and some VEp field parsing
 - Moved sacct module to case level
 
 Install.pl
+
 - Added boolean flag condaUpDate and changed flag perlInstall to boolean
 - Renamed preferBioConda to preferShell and made it boolean
 - Renamed flag update to noUpdate and made it boolean
@@ -135,11 +137,13 @@ Install.pl
 - Updated chanjo to v4.0.0
 
 vcfParser.pl
+
 - Removed Sift and Polyhen parsing from CSQ field
 - Change SYMBOL to HGNC_ID in vcfparser
 - Added per_gene option
 
 qcCollect.pl
+
 - Changed percentag_mapped_reads to percentage_mapped_reads
 - Added raw total sequences and reads mapped to qcCollect
 - Added Vcftools and Plink2 versions to qcmetrics
