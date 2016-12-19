@@ -12,7 +12,15 @@ Among other things, the file enables:
 
 3. Collection of analysis info for the sequence analysis pipeline 
 
-The pedigree file format is defined by `PLINK`_, although we currently only support tab-sep pedigree files. 
+MIP supports 2 file formats for pedigree metadata PLINK and YAML:
+
+*YAML*
+
+An example pedigree file with additional metadata can be found at `metadata.yaml`_.
+
+*PLINK*
+
+The pedigree file format defined by `PLINK`_, although we currently only support tab-sep pedigree files. 
 
 The first row should start with a "#" (hash) and contain relevant headers separated by tabs describing each column.
 The first six columns are mandatory. The name and order of the headers should follow:
@@ -70,3 +78,4 @@ Abbrevations
 
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _here: https://github.com/henrikstranneheim/MIP/blob/develop/templates/1_pedigree.txt
+.. _metadata.yaml: https://github.com/henrikstranneheim/MIP/blob/develop/templates/118_pedigree.yaml

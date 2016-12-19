@@ -1,6 +1,150 @@
 Change Log
 ===========
 
+MIP v3.0 --> v4.0
+
+mip.pl
+- Fixed chrY for female in SVRanking
+- Fixed bug in SambambaDepth causing logging to be turned off
+- Fixed bug causing MostCompleteBAM being incorrectly added when launching single module
+- Fixed bug causing info for MarkDuplicates to not be logged to qc_sampleInfo
+- Added flag for creating index file with GatherBAMFile. Default to TRUE
+- Temporary fix allowing samtools to create index for GATKBaseRecalibration BAM instead of Picard to accomodate pileup.js
+- Modified javaUseLargePages and reduceIO conditional statement to be implicitly boolean
+- Added creation of directory for analysis config file unless directory already exists
+- Validate all parameters
+- Changed percentag_mapped_reads to percentage_mapped_reads
+- Added Vcftools and Plink2 versions to qcmetrics
+- Changed default for GATKReAligner to “0”
+- Added SLURM QOS to sbatch header
+	 - Allowed values: [low, normal, high]. Defaults to "normal”.
+- Add program processing Markduplicates metric to qc_sampleInfo as “ProcessedBy” for log purpose
+- Remade array parameter inFilesDirs to hash parameter inFilesDir
+- Added CLNREVSTAT to config
+- Changed analysisType from scalar to hash (-at sampleID=analysisType)
+	- Default genomes
+	- Can be supplied from pedigree using "Sequence_type"
+	- Enables performing analysis under correct fastq location and with correct parameters for sample specific analyses
+	- Changed default output structure
+        - FamilyID is now root
+        - Data is stored under root in analysisType dir
+        - pedigree is stored under root
+        - scripts, mip_log, config and qc_sampleInfo are stored under FamilyID/analysis
+- Changed "exomes" and "genomes" to "wes" and "wgs" respectively
+-  Added new baitset shortcut in pedigree: Agilent_SureSelectFocusedExome.V1.GRCh37_targets.bed
+- Modified UpdateToAbsolutePath to get info from definitions directly
+- Move all rio BAMProcessing to same in and out directory to enable skipping of programs
+	- Modules that variant callers and qc modules output under their own dir, but gathered data is processed under alignment directory
+- Call sub in RankVariants for select file and adjust MT|M
+- Changed bcf generation to vcf.gz generation + tabix index
+- Changed rankedBCFFile to rankedBinaryFile
+- Changed svRankedBCFFile to svRankedBinaryFile
+- Changed tag in qc_SampleInfo from BCFFile to VCFBinaryFile and VCFSVBCFFile to SVBinaryFile
+- Change to tabix from bcf since it seems more forgiving and produce similar compression level
+- Added “—rank_results” in genmod score for producing rank view in Scout
+- Remove rank score sorting of clinical/ research
+- Add bwa log and HLA log to qc_sampleInfo and copying back to hds
+- Added decomposing using bcftools for variant callers and normalization for GATKVariantRecalibration
+- GRCH38 Error: Error: Field name 'phyloP46way_primate' not found dbSnpEff
+	- phyloP46way_primate -> phyloP20way_mammalian
+	- phyloP100way_vertebrate -> phyloP7way_vertebrate
+	- phastCons46way_primate ->  phastCons20way_mammalian
+	- phastCons100way_vertebrate -> phastCons7way_vertebrate
+- Added novel calculation of F-score using plink2
+- Add CLNVAR curation status (CLNREVSTAT) into rank model and bumped rank_model to version 1.17
+- Added —disable_auto_index_creation_and_locking_when_reading_rods to GATKReAlign and GATKBaserecal
+- Added SWEREF into rank model and to default (NOTE: only car 22 pending actual release)
+- Added ‘variant integrity’ to sampleCheck
+- Modifed InbreedingFactor regExp for plink2 .het output
+- Added module to split fastq files, move original files to sub dir and then exit
+- Exchanged 'vars' for our
+- Made Path and outdataDirection and outDataFile be collected by recursive strategy
+- Let MIP detect if no affected is in pedigree and warn and turn of genmod models, score and compound
+- Updated VTref switch to avoid modifying same reference twice
+- Updated rank model to locate SIFT and PolyPhen from CSQ-field directly
+- Added LoFtool gene intolerance prediction to rank model
+- Updated rank_model to version 1.18
+- Added additional sorting of SV variants after vcfanno annotation
+- Added extra sort of SV variants after ranking
+- Process SV exome|rapid as one file instead of splitted per contig to ensure that no contig will lack variants
+- Added insert qc metrics to qc_sampleInfo and qcmetrics
+- Added support for interleaved fastq files and relaxed file convention criteria
+    - Interleaved info is gathered from fastq header for read direction 1
+    - BWAMem alignment is automatically adjusted accordingly
+    - MIP now supports mixing of SE, PE and PE-interleaved files within the same fastq directory
+    - Relaxed file convention criteria by collecting mandatory info from fastq header - just require sampleID in filename
+    - Add fake date since this information is not recorded in fastq header for standardised file spec
+- Added support for metadata in yaml format (pedigree and other meta data)
+- MIP will look at the filending to detect file format
+- Set mandatory keys in Plink pedigree format to be lower case throughout in MIP output
+- Added additional reformating of yaml value for "sex" and "phenotype" under new keys to adhere to Plink format when required
+- Modified and added pedigree templates
+- Removed instanceTag and researchEthicalApproved
+- Added temp_dir to genmod annotate and filter in sub VT
+- Modfied pedigree file to genmod calls to use famFile and changed default to 'ped'
+- Modified pedigree file default ending to “.yaml”
+- Modified qcCollect to new yaml structure
+    - Added sampleID level for evaluate
+    - Cleaned up code
+- Added cut-offs for evaluation of mendel and father
+- Added collection of expected_coverage from ped.yaml and relay to qcCollect for evaluation
+Removed extra feature annotations and some VEp field parsing
+    svVcfParserRangeFeatureAnnotationColumns:
+      - 3 = Ensembl_gene_id - REMOVED
+      - 4 = HGNC_symbol
+      - 5 = Phenotypic_disease_model - REMOVED
+      - 6 = OMIM_morbid - REMOVED
+      - 7 = Ensembl_transcript_to_refseq_transcript - REMOVED
+      - 8 = Gene_description - REMOVED
+
+    svVcfParserSelectFeatureAnnotationColumns:
+      - 3 = HGNC_symbol
+      - 10 = Phenotypic_disease_model - REMOVED
+      - 11 = OMIM_morbid - REMOVED
+      - 14 = Ensembl_gene_id - REMOVED
+      - 16 = Reduced_penetrance - REMOVED
+      - 17 = Clinical_db_gene_annotation - REMOVED
+      - 18 = Disease_associated_transcript - REMOVED
+      - 19 = Ensembl_transcript_to_refseq_transcript - REMOVED
+      - 20 = Gene_description - REMOVED
+      - 21 = Genetic_disease_model - REMOVED
+
+    - Removed additional VEP parsing:
+      - GeneticRegionAnnotation
+      - HGVScp
+      - INTRON
+      - EXON
+      - STRAND
+      - HGVSc
+      - HGVSp
+- Added GBCF file creation and key-path to qc_sampleInfo
+- Added pedigree_minimal (.fam file) and config_file_analysis to qc_sample_info
+- Add test of SV files in analysisrunstatus
+- Expect select file to have full path and not be located in MIP reference directory
+- Moved sacct module to case level
+
+Install.pl
+- Added boolean flag condaUpDate and changed flag perlInstall to boolean
+- Renamed preferBioConda to preferShell and made it boolean
+- Renamed flag update to noUpdate and made it boolean
+- Activated CNVnator installation 
+- Added install script to conda env for printing software versions connected to MIP version
+- Added Validate parameter checks, named arguments and sub description
+- Updated genmod to version 3.5.6
+- Added ability to set python version when creating conda env
+- Updated chanjo to v4.0.0
+
+vcfParser.pl
+- Removed Sift and Polyhen parsing from CSQ field
+- Change SYMBOL to HGNC_ID in vcfparser
+- Added per_gene option
+
+qcCollect.pl
+- Changed percentag_mapped_reads to percentage_mapped_reads
+- Added raw total sequences and reads mapped to qcCollect
+- Added Vcftools and Plink2 versions to qcmetrics
+- Updated regExp file to version 12
+
 MIP v2.6 --> v3.0
 
 - Added Net/SSLeay.pm to install.pl
