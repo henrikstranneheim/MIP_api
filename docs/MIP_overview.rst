@@ -10,18 +10,19 @@ reads from the Illumina platform in fastq(.gz) format to generate annotated
 ranked potential disease causing variants. 
 MIP performs QC, alignment, coverage analysis, variant discovery and
 annotation, sample checks as well as ranking the found variants according to disease potential
-with a minimum of manual intervention. MIP is compatible with `Scout`_ and `Puzzle`_ for visualization of
-identified variants.
+with a minimum of manual intervention. MIP is compatible with `Scout`_ for visualization of
+identified variants. MIP analyses snv, indels and SV.
 MIP has been in use in the clinical production at the Clinical Genomics facility at Science for 
 Life Laboratory since 2014.
 
 Features
 --------
  - Installation
- 	* Simple automated install of all programs using conda/SHELL via supplied install script 
+ 	* Simple automated install of all programs using conda/SHELL via supplied install script
+ 	* Downloads and prepares references in the installation process
  - Autonomous
  	* Checks that all dependencies are fulfilled before launching
- 	* Builds/Prepares/downloads references and/or files missing before launching	
+ 	* Builds and prepares references and/or files missing before launching
  	* Decompose and normalise reference(s) and variant vcf(s)
  	* Splits and merges files/contigs for samples and families when relevant
  - Automatic
@@ -33,11 +34,12 @@ Features
  	* Design your own workflow by turning on/off relevant modules 
  	* Restart an analysis from anywhere in your workflow
  	* Process one, or multiple samples using the module(s) of your choice
- 	* Supply parameters on the command line, in a pedigree file or via config files
+ 	* Supply parameters on the command line, in a pedigree.yaml file or via config files
  	* Simulate your analysis before performing it
  	* Redirect each modules analysis process to a temporary directory (@nodes or @login)
  	* Limit a run to a specific set of genomic intervals
- 	* Use multiple variant callers and annotation programs
+ 	* Use multiple variant callers for both snv, indels and SV
+ 	* Use multiple annotation programs
  	* Optionally split data into clinical variants and research variants
  - Fast
  	* Analyses an exome trio in approximately 4 h
@@ -48,7 +50,7 @@ Features
  	* Recreate your analysis from the MIP log or generated config files
  	* Logs sample meta-data and sequence meta-data
  	* Logs version numbers of softwares and databases
- 	* Checks sample integrity (sex and relationship)
+ 	* Checks sample integrity (sex, contamination,duplications, ancestry, inbreeding and relationship)
  	* Test data output existens and integrity using automated tests
  - Annotation
  	* Gene annotation
@@ -64,12 +66,14 @@ Features
  	* Use standard formats whenever possible
  - Visualization
   	* Ranks variants according to pathogenic potential
- 	* Output is directly compatibel with Scout and Puzzle
+ 	* Output is directly compatibel with `Scout`_
 
 
 Example Usage
 -------------
-``perl mip.pl -pMosaikBuild 0 -configFile 1_config.yaml``
+  .. code-block:: console
+  
+    $ mip --family_id [family_id] --pbwa_mem 1 --config_file [mip_config.yaml] --pedigree_file [family_id_pedigree.yaml]
 
 Getting Started
 ---------------
@@ -84,16 +88,14 @@ Change log (See :doc:`change_log`)
 Prerequisites
 ~~~~~~~~~~~~~~
 
-MIP will only require prerequisites when processing a modules that has dependencies (See :doc:`setup`).
-However, some frequently used sequence manipulation tools e.g. samtools, PicardTools, Bedtools are probably
-good to have in your path.
+MIP will only require prerequisites when processing a modules that has dependencies both programs 
+and references (See :doc:`setup`).
 
 
 Meta-Data
 ^^^^^^^^^^
 Meta data regarding the pedigree, gender and phenotype should be supplied for the analysis.
 
-- Pedigree file (`PLINK`_-format; See :doc:`pedigree_file` & MIP´s github `repository`_).
 - Configuration file (`YAML`_-format; See :doc:`configuration_file` & MIP´s github `repository`_).
 
 Usage
@@ -104,10 +106,6 @@ MIP is called from the command line and takes input from the command line
 Lists are supplied as comma separated input, repeated flag entries on the command line or 
 in the config using the yaml format for arrays. 
 
-.. note::
-
-  List or repeated entries need to be submitted with the same order for each element across all 
-  supplied lists. 
   
 Only flags that will actually be used needs to be specified and MIP will check that all
 required parameters and dependencies (for these flags only) are set before submitting to SLURM. 
@@ -216,7 +214,6 @@ This is an example of a workflow that MIP can perform (used @CMMS).
 
 
 .. _Scout: https://github.com/Clinical-Genomics/scout
-.. _Puzzle: https://github.com/robinandeer/puzzle
 .. _PLINK: http://pngu.mgh.harvard.edu/~purcell/plink/data.shtml
 .. _Mosaik: https://github.com/wanpinglee/MOSAIK
 .. _BWA: http://bio-bwa.sourceforge.net/
